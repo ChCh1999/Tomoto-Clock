@@ -5,12 +5,12 @@ namespace TomatoClock
     public class Clock
     {
         //private string workPlan;
-        private DateTime StartTime { set; get; }
-        private TimeSpan PlanTime { set; get; }
+        public DateTime StartTime { set; get; }
+        public TimeSpan PlanTime { set; get; }
         private bool result = true;
         private string situation = "";
 
-        private Clock(DateTime start, TimeSpan plan)
+        public Clock(DateTime start, TimeSpan plan)
         {
             StartTime = start;
             PlanTime = plan;
@@ -32,6 +32,7 @@ namespace TomatoClock
             }
             return RemainedTime();
         }
+
         private string Situation()    //番茄钟简易提醒
         {
             if (result == true)
@@ -40,14 +41,15 @@ namespace TomatoClock
                 situation = "任务未完成！";
             return situation;
         }
+
         private void RemindMethod()   //番茄钟正式提醒
         {
 
         }
+
         private TimeSpan RemainedTime()      // 返回剩余时间
         {
             return PlanTime - (DateTime.Now - StartTime);
         }
     }
-
 }
