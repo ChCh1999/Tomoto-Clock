@@ -1,4 +1,4 @@
-# Tomoto-Clock
+﻿# Tomoto-Clock
 ## 程序功能：工作时间管理，结合工作计划的设置更好地管理自己的工作时间
 		前台界面：时钟、TODOLIst、选择当前工作
 		菜单：编辑工作计划、查看history
@@ -23,7 +23,19 @@
 	clock对象
 	提供WorkPlanList、History的初始化方法。数据获取与存储的方法待定
 	给出供前台使用的调用、修改后台数据类（工作计划、历史记录、时钟）的数据
+##WorkPlan类（）     2018/12/24/10.05   赵彪改
+      属性：计划的名称(workName);string
+                设定计划完成需要的天数（dayTime）;int
+ 	动态的番茄数组（tomatolist）；
+      方法:  WorkPlan(string wkn,int dt)    //有参的构造函数
+	WorkPlan()                             //无参的构造函数
+public void addTomato(float Time,int signNumber) //给番茄数组增加一个新的番茄
+       class Tomato:
+                属性：float tomatoTime（番茄的时间）
+ 	          int signNumber     (这个番茄的标志)
+                方法：Tomato(float Time,int sN)   //必须提供一个有参数的构造方法
 ## 工作的背景音乐
+                
 
 	
 	
