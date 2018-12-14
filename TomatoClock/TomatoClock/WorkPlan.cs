@@ -8,8 +8,8 @@ namespace TomatoClock
 {
     class WorkPlan
     {
-        private string workName { get; set;}
-        private int dayTime { get; set; }
+        public string workName { get; set;}
+        public int dayTime { get; set; }
         public List<Tomato> tomatolist = new List<Tomato>();    //tomato的动态数组，每个tomato都有一个自己的时间
         public WorkPlan(string wkn,int dt)
         {
