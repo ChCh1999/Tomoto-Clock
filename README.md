@@ -17,6 +17,19 @@
 ## History类 （存储历史记录）
 	WorkList {workInfo(存储工作信息：名称、预计时间、本周（待定）完成情况)...（是否保留默认的学习计划待定）}
 	提供WorkList的读写方法
+	字段：
+		List<WorkPlan> plans//存储工作计划
+	方法：
+			静态方法：
+		public static int getDays(WorkPlan w)//获取计划天数
+        public static void setDays(WorkPlan w, int days)//设置天数
+        public static string getName(WorkPlan w)//获取计划名称
+        public static void setName(WorkPlan w, string name)//设置计划名称
+        public static List<Tomato> getTomatoList(WorkPlan w)//获取计划中的每日番茄表
+        public static void AddTomato(WorkPlan w,TimeSpan ts)//添加番茄
+        public static void DeleteTomato(WorkPlan w,int Sn)//删除番茄
+
+        
 ## Service类 （整个程序的后台管理类，链接后台数据类与前台界面，管理程序中的各种数据，工作量偏大）
 	WorkPlanList工作计划数组，存储用户的当前工作计划
 	History对象

@@ -1,44 +1,52 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
-class WorkpPlan
+namespace TomatoClock
 {
-    public int days;
-    public string name;
-    public DateTime time;
-}
-class History
-{
-
-    WorkpPlan[] plans = new WorkpPlan[31];
-
-    public int getDays(WorkpPlan w)
+    class History
     {
-        return w.days;
+
+        //WorkPlan[] plans = new WorkPlan[31];
+        List<WorkPlan> plans = new List<WorkPlan>();
+        public static int getDays(WorkPlan w)
+        {
+            return w.dayTime;
+        }
+
+        public static void setDays(WorkPlan w, int days)
+        {
+            w.dayTime = days;
+        }
+
+        public static string getName(WorkPlan w)
+        {
+            return w.workName;
+        }
+
+        public static void setName(WorkPlan w, string name)
+        {
+            w.workName = name;
+        }
+
+        public static List<Tomato> getTomatoList(WorkPlan w)
+        {
+            return w.tomatolist;
+        }
+
+        public static void AddTomato(WorkPlan w,TimeSpan ts)
+        {
+            Tomato addone = new Tomato(ts, w.tomatolist.Count + 1);
+        }
+        public static void DeleteTomato(WorkPlan w,int Sn)
+        {
+            foreach(Tomato  a in w.tomatolist)
+            {
+                if (a.signNumber == Sn)
+                    w.tomatolist.Remove(a);
+            }
+        }
     }
 
-    public void setDays(WorkpPlan w,int days)
-    {
-        w.days = days;
-    }
-
-    public string getName(WorkpPlan w)
-    {
-        return w.name;
-    }
-
-    public void setName(WorkpPlan w,string name)
-    {
-        w.name = name;
-    }
-
-    public DateTime getTime(WorkpPlan w)
-    {
-        return w.time;
-    }
-
-    public void setTime(WorkpPlan w,DateTime time)
-    {
-        w.time = time;
-    }
 }
 
