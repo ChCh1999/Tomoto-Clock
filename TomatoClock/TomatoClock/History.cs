@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TomatoClock
 {
@@ -44,6 +45,31 @@ namespace TomatoClock
             {
                 if (a.signNumber == Sn)
                     w.tomatolist.Remove(a);
+            }
+        }
+        
+        //删除对应名字的计划。
+        public void DeleteWorkplan(String Name)
+        {
+            WorkPlan w = SearchWorkplan(Name);
+            plans.Remove(w);
+        }
+        //查找对应的workname
+        public WorkPlan SearchWorkplan(String name)
+        {
+            var W1 = from n in plans
+                     where n.workName == name
+                     select n;
+            WorkPlan W2 = null;
+            foreach (WorkPlan ele in W1) W2 = ele;
+            return W2;
+        }
+        public void AddWorkplan(String wn,int t,List<TimeSpan> T)
+        {
+            WorkPlan newWorkplan=new WorkPlan(wn, t);
+            for (int i = 0; i < T.Count; i++)
+            {
+                newWorkplan.tomatolist.Add(new Tomato(T[i], newWorkplan.tomatolist.Count + 1));
             }
         }
     }

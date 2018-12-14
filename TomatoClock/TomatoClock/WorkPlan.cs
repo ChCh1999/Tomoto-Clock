@@ -10,6 +10,7 @@ namespace TomatoClock
     {
         public string workName { get; set;}
         public int dayTime { get; set; }
+        public List<String> toDolist = new List<string>();       //给每个计划增加一个相当于便条式的属性
         public List<Tomato> tomatolist = new List<Tomato>();    //tomato的动态数组，每个tomato都有一个自己的时间
         public WorkPlan(string wkn,int dt)
         {

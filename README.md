@@ -40,11 +40,13 @@
       属性：计划的名称(workName);string
                 设定计划完成需要的天数（dayTime）;int
  	动态的番茄数组（tomatolist）；
+	toDolist  动态的数组（记录便条，增加，删除便条）
       方法:  WorkPlan(string wkn,int dt)    //有参的构造函数
 	WorkPlan()                             //无参的构造函数
 public void addTomato(float Time,int signNumber) //给番茄数组增加一个新的番茄
-       class Tomato:
-                属性：float tomatoTime（番茄的时间）
+##Tomato类:
+                属性：DayRecordlist   记录每天番茄状态的动态数组，-1为已删除的番茄，0为未完成的番茄，1为已完成的番茄
+ 	          float tomatoTime（番茄的时间）
  	          int signNumber     (这个番茄的标志)
                 方法：Tomato(float Time,int sN)   //必须提供一个有参数的构造方法
 ## 工作的背景音乐
