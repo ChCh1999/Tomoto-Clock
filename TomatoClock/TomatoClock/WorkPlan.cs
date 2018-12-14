@@ -17,22 +17,10 @@ namespace TomatoClock
             dayTime = dt;
         }
         public WorkPlan() { }
-        public void addTomato(float Time,int signNumber)        //将一个番茄加入到番茄的list中
+        public void addTomato(TimeSpan Time,int signNumber)        //将一个番茄加入到番茄的list中
         {
             Tomato t=new Tomato(Time, signNumber);
             tomatolist.Add(t);
         }
     }
-    class Tomato
-    {
-        public float tomatoTime { get; set; }
-        public int signNumber { get; set; }          //标记的数字，用来标明该番茄
-        public Tomato(float Time,int sN)
-        {
-            tomatoTime = Time;
-            signNumber = sN;
-        }
-    }
-         
-    
 }
