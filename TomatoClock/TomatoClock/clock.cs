@@ -1,44 +1,55 @@
 ﻿using System;
-using System.Timers;
 
 namespace TomatoClock
 {
     public class Clock
     {
         //private string workPlan;
-        private TimeSpan MIN_TIMESPAN = new TimeSpan(0, 0, 0, 1);       // 1s
-        private Timer timer = new Timer(1000);                          // 创建一个间隔为1s的Timer
-        public TimeSpan RemainedTime;                                   // 剩余时间
         public DateTime StartTime { set; get; }
         public TimeSpan PlanTime { set; get; }
-        public bool isFinished = false;                                // 判断是否完成
+        private bool result = true;
+        private string situation = "";
 
-        public Clock(DateTime start, TimeSpan plan)                     // 初始化
+        public Clock(DateTime start, TimeSpan plan)
         {
             StartTime = start;
             PlanTime = plan;
-            RemainedTime = plan;
-            timer.Elapsed += TimeEvent;
         }
 
-        public void Start()
+        private TimeSpan Stop()              // 停止番茄钟
         {
-            timer.Start();
-        }
-
-        private void TimeEvent(object sender, ElapsedEventArgs e)       // -1s  到计时
-        {
-            while (RemainedTime.TotalSeconds == 0)
+            //强制停止
+            if (DateTime.Now - StartTime < PlanTime)
             {
-                isFinished = true;
-                timer.Stop();
+                result = false;
+                RemindMethod();
             }
-            RemainedTime = RemainedTime.Subtract(MIN_TIMESPAN);
+            //到时间结束
+            else if (DateTime.Now - StartTime == PlanTime)
+            {
+                result = true;
+                RemindMethod();
+            }
+            return RemainedTime();
         }
 
-        public void Stop()
+        private string Situation()    //番茄钟简易提醒
         {
-            timer.Stop();
+            if (result == true)
+                situation = "任务已完成！";
+            else
+                situation = "任务未完成！";
+            return situation;
+        }
+
+        private void RemindMethod()   //番茄钟正式提醒
+        {
+
+        }
+
+        private TimeSpan RemainedTime()      // 返回剩余时间
+        {
+            return PlanTime - (DateTime.Now - StartTime);
         }
     }
 }
