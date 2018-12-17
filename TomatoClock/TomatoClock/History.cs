@@ -9,7 +9,7 @@ namespace TomatoClock
     {
 
         //WorkPlan[] plans = new WorkPlan[31];
-        List<WorkPlan> plans = new List<WorkPlan>();
+        public List<WorkPlan> plans = new List<WorkPlan>();
         public static int getDays(WorkPlan w)
         {
             return w.dayTime;
@@ -34,17 +34,31 @@ namespace TomatoClock
         {
             return w.tomatolist;
         }
-
-        public static void AddTomato(WorkPlan w,TimeSpan ts)
+        public static Tomato getTomato(WorkPlan wp,int sn)
+        {
+            foreach(Tomato t in wp.tomatolist)
+            {
+                if (t.signNumber == sn)
+                    return t;
+            }
+            return null;
+        }
+        public void AddTomato(WorkPlan w,TimeSpan ts,int day)
         {
             Tomato addone = new Tomato(ts, w.tomatolist.Count + 1);
+            for (int i = 0; i < day; i++)
+                addone.DayRecordlist[i] = -1;
         }
-        public static void DeleteTomato(WorkPlan w,int Sn)
+        public void DeleteTomato(WorkPlan w,int Sn,int day)
         {
             foreach(Tomato  a in w.tomatolist)
             {
                 if (a.signNumber == Sn)
-                    w.tomatolist.Remove(a);
+                    for(int i=day; i < w.dayTime; i++)
+                    {
+                        a.DayRecordlist[i] = -1;
+                    }
+                    
             }
         }
         
@@ -63,6 +77,12 @@ namespace TomatoClock
             WorkPlan W2 = null;
             foreach (WorkPlan ele in W1) W2 = ele;
             return W2;
+            //foreach (WorkPlan WP in  plans)
+            //{
+            //    if (WP.workName == name)
+            //        return WP;
+            //}
+            //return null;//备选方案
         }
         public void AddWorkplan(String wn,int t,List<TimeSpan> T)
         {

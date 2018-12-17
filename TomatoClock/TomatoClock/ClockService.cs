@@ -9,38 +9,68 @@ namespace TomatoClock
 {
     class ClockService
     {
-        private TimeSpan MIN_TIMESPAN = new TimeSpan(0, 0, 0, 1);       // +1s
-        private Timer timer = new Timer(1000);                          // 创建一个间隔为1s的Timer
-        public TimeSpan RemainedTime;                                   // 剩余时间
+        public History history = new History();
+        public WorkPlan currentWP;//当前工作计划
+        //TODO history.init();
 
-        public ClockService(Clock clock)
+        //工作计划相关操作
+        public WorkPlan chooseWorkPlan(String WPName)
         {
-            RemainedTime = clock.PlanTime;                              // 初始化剩余时间
-            timer.Elapsed += TimeEvent;
-            timer.Start();
+            return history.SearchWorkplan(WPName);
+        }//根据名称查询工作
+        public void addWorkPlan(String name, int days, List<TimeSpan> tomatoList)
+        {
+            history.AddWorkplan(name, days, tomatoList);
+        }//添加WP
+        public void deleteWorkPlan(String Name)
+        {
+            history.DeleteWorkplan(Name);
+        }//删除WP
+        public bool ChangeWPName(String nameBefore,String nameNew)
+        {
+            WorkPlan target= history.SearchWorkplan(nameBefore);
+            if (target == null)
+                return false;
+            History.setName(target, nameNew);
+            return true;
+        }//修改工作计划名
+        public bool ChangeWPDays(String WPName, int days)
+        {
+            WorkPlan target = history.SearchWorkplan(WPName);
+            if (target == null)
+                return false;
+            History.setDays(target, days);
+            return true;
+        }//修改工作计划天数
+        
+        //具体番茄的操作
+        public void deleteTomato(WorkPlan wp, int sn,int day)
+        {
+            history.DeleteTomato(wp, sn,day);
         }
+        public void addTomato(WorkPlan wp,TimeSpan ts,int day)
+        {
+            history.AddTomato(wp, ts, day);
+        }
+        public List<int> getActiveTomatoSignNum(WorkPlan wp, int day)
+        {
+            List<int> result = new List<int>();
+            result = (from Tomato a in wp.tomatolist where a.DayRecordlist[day] != -1 select a.signNumber).ToList();
+            return result;
+        }//获取某天某计划所有番茄的代号
+        public bool showTomato(WorkPlan wp, int day, int tomatoSignNumber)
+        {
+            Tomato target = History.getTomato(wp, tomatoSignNumber);
+            if (target == null)
+            {
+                return false;
+            }//无结果
+            if (target.DayRecordlist[day] == 1)
+                return true;
+            else
+                return false;
+        }//获取某番茄某天的状态
+         //时钟相关操作
 
-        private void TimeEvent(object sender, ElapsedEventArgs e)            // -1s
-        {
-            while (RemainedTime.TotalSeconds == 0)
-                timer.Stop();
-            RemainedTime = RemainedTime.Subtract(MIN_TIMESPAN);
-        }
-
-        public void Pause()
-        {
-            timer.Enabled = false;
-        }
-
-        public void Resume()
-        {
-            timer.Enabled = true;
-        }
-
-        public void Stop()
-        {
-            timer.Stop();
-            // 停止后的操作
-        }
     }
 }

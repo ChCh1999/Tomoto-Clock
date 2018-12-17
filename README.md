@@ -36,6 +36,22 @@
 	clock对象
 	提供WorkPlanList、History的初始化方法。数据获取与存储的方法待定
 	给出供前台使用的调用、修改后台数据类（工作计划、历史记录、时钟）的数据
+	属性：
+		public History history = new History();//history对象
+        public WorkPlan currentWP;//当前工作计划
+	方法：
+		//工作计划相关操作
+        public WorkPlan chooseWorkPlan(String WPName)//根据名称查询工作
+        public void addWorkPlan(String name, int days, List<TimeSpan> tomatoList)//添加WP
+        public void deleteWorkPlan(String Name)//删除WP
+        public bool ChangeWPName(String nameBefore,String nameNew)//修改工作计划名
+        public bool ChangeWPDays(String WPName, int days)//修改工作计划天数
+        
+        //具体番茄的操作
+        public void deleteTomato(WorkPlan wp, int sn,int day)
+        public void addTomato(WorkPlan wp,TimeSpan ts,int day)//添加和删除番茄
+        public List<int> getActiveTomatoSignNum(WorkPlan wp, int day)//获取某天某计划所有番茄的代号
+        public bool showTomato(WorkPlan wp, int day, int tomatoSignNumber)//获取某番茄某天的状态
 ##WorkPlan类（）     2018/12/24/10.05   赵彪改
       属性：计划的名称(workName);string
                 设定计划完成需要的天数（dayTime）;int
@@ -45,7 +61,7 @@
 	WorkPlan()                             //无参的构造函数
 public void addTomato(float Time,int signNumber) //给番茄数组增加一个新的番茄
 ##Tomato类:
-                属性：DayRecordlist   记录每天番茄状态的动态数组，-1为已删除的番茄，0为未完成的番茄，1为已完成的番茄
+                属性：DayRecordlist   记录每天番茄状态的动态数组，-1为不存在的番茄，0为未完成的番茄，1为已完成的番茄
  	          float tomatoTime（番茄的时间）
  	          int signNumber     (这个番茄的标志)
                 方法：Tomato(float Time,int sN)   //必须提供一个有参数的构造方法
