@@ -11,7 +11,6 @@ namespace TomatoClock
         public TimeSpan RemainedTime;                                   // 剩余时间
         public DateTime StartTime { set; get; }
         public TimeSpan PlanTime { set; get; }
-        public bool isFinished = false;                                 // 判断是否完成
 
         public Clock(DateTime start, TimeSpan plan)                     // 初始化
         {
@@ -21,22 +20,17 @@ namespace TomatoClock
             timer.Elapsed += TimeEvent;
         }
 
-        public void Start()
-        {
-            timer.Start();
-        }
-
         private void TimeEvent(object sender, ElapsedEventArgs e)       // -1s  到计时
         {
             while (RemainedTime.TotalSeconds <= 0)
             {
-                FinishClockEvent();
+                SucceedFinishClockEvent();
                 timer.Stop();
             }
             RemainedTime = RemainedTime.Subtract(MIN_TIMESPAN);
         }
 
-        public delegate void FinishClockHandler();
-        public event FinishClockHandler FinishClockEvent;
+        public delegate void SucceedFinishClockHandler();
+        public event SucceedFinishClockHandler SucceedFinishClockEvent;
     }
 }
