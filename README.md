@@ -14,6 +14,10 @@
 	总时间 （倒计时） todoList
 	计时结束的提醒办法（铃声），返回相应值供service类检测然后进行相应的技术处理
 	提供读写各种属性的方法，初始化可以传入
+	属性：Timer timer 计时器
+	          TimeSpan RemainedTime 剩余的时间
+	          TimeSpan PlanTime 计划要完成的时间
+	方法：Clock(TimeSpan plan)	// 创建一个时钟
 ## History类 （存储历史记录）
 	WorkList {workInfo(存储工作信息：名称、预计时间、本周（待定）完成情况)...（是否保留默认的学习计划待定）}
 	提供WorkList的读写方法
@@ -52,7 +56,14 @@
         public void addTomato(WorkPlan wp,TimeSpan ts,int day)//添加和删除番茄
         public List<int> getActiveTomatoSignNum(WorkPlan wp, int day)//获取某天某计划所有番茄的代号
         public bool showTomato(WorkPlan wp, int day, int tomatoSignNumber)//获取某番茄某天的状态
-##WorkPlan类（）     2018/12/24/10.05   赵彪改
+
+        //有关时钟的操作
+        public void initClock()	// 初始化一个为15分钟的定时器
+        public void ChangeClockTime(TimeSpan plan)	// 修改定时器的时间
+        public void StartClock()	// 定时器开始倒计时
+        public void SucceedFinishedEvent()		// 如若成功时的操作（此处已被添加到Clock内部的事件内）
+        public void StopClock()	// 定时器被人为停止后的操作
+## WorkPlan类（）     2018/12/24/10.05   赵彪改
       属性：计划的名称(workName);string
                 设定计划完成需要的天数（dayTime）;int
  	动态的番茄数组（tomatolist）；
@@ -60,7 +71,7 @@
       方法:  WorkPlan(string wkn,int dt)    //有参的构造函数
 	WorkPlan()                             //无参的构造函数
 public void addTomato(float Time,int signNumber) //给番茄数组增加一个新的番茄
-##Tomato类:
+## Tomato类:
                 属性：DayRecordlist   记录每天番茄状态的动态数组，-1为不存在的番茄，0为未完成的番茄，1为已完成的番茄
  	          float tomatoTime（番茄的时间）
  	          int signNumber     (这个番茄的标志)

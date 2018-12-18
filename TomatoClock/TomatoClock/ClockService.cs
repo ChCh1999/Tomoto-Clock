@@ -74,11 +74,23 @@ namespace TomatoClock
 		//时钟相关操作
         private Clock clock;
 
-        public void StartClock(DateTime start, TimeSpan plan)
+        public void initClock()
         {
-            clock = new Clock(start, plan);
-            clock.SucceedFinishClockEvent += SucceedFinishedEvent;
-            clock.timer.Start();
+            clock = new Clock(new TimeSpan(0, 0, 15, 0));           // 初始化一个15分钟的定时器
+            clock.SucceedFinishClockEvent += SucceedFinishedEvent;  // 添加在成功完成定时器的任务
+        }
+
+        public void ChangeClockTime(TimeSpan plan)
+        {
+            clock.PlanTime = plan;
+        }
+
+        public void StartClock()
+        {
+            if(!(Object.Equals(clock,default(Clock))))
+            {
+                clock.timer.Start();
+            }
         }
         
         public void SucceedFinishedEvent()
