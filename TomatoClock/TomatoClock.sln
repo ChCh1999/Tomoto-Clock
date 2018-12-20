@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomatoClock", "TomatoClock\TomatoClock.csproj", "{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomatoClockVersion1", "C:\Users\王仁杰\source\repos\TomatoClock\TomatoClockVision1\TomatoClockVersion1.csproj", "{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TomatoClockVersion1", "TomatoClockVision1\TomatoClockVersion1.csproj", "{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +36,8 @@ Global
 		{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}.Release|x86.ActiveCfg = Release|Any CPU
 		{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}.Release|x86.Build.0 = Release|Any CPU
 		{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}.Debug|Any CPU.Build.0 = Debug|x86
+		{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}.Debug|ARM.ActiveCfg = Debug|ARM
 		{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}.Debug|ARM.Build.0 = Debug|ARM
 		{94CAF42E-F434-45F0-BFEC-CA9ABFF5FFB5}.Debug|ARM.Deploy.0 = Debug|ARM
