@@ -89,7 +89,7 @@ namespace TomatoClock
         {
             if(!(Object.Equals(clock,default(Clock))))
             {
-                clock.timer.Start();
+                clock.Start();
             }
         }
         
@@ -102,8 +102,8 @@ namespace TomatoClock
         {
             if(!Object.Equals(clock, default(Clock)))
             {
-                clock.timer.Stop();
                 // 未完成时的操作
+                clock.Stop();
             }
         }
     }
