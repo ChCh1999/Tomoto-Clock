@@ -24,6 +24,7 @@ namespace TomatoClockVision1
     {
         public TemporaryTomato()
         {
+            
             this.InitializeComponent();
         }
 
