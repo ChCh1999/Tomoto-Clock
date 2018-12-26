@@ -7,8 +7,6 @@
 	界面初始化、Service类的初始化
 ## 工作计划类 （存储工作计划）
 	天数 名称 时间（一周、每天）
-	ToDolist 
-	提供读写各种属性的方法
 ## Clock类 （在番茄钟计时时工作）
 	工作计划对象
 	总时间 （倒计时） todoList
@@ -18,14 +16,14 @@
 	          TimeSpan RemainedTime 剩余的时间
 	          TimeSpan PlanTime 计划要完成的时间
 	方法：Clock(TimeSpan plan)	// 创建一个时钟
-## History类 （存储历史记录）
+## HistoryService类 （存储历史记录）
 	WorkList {workInfo(存储工作信息：名称、预计时间、本周（待定）完成情况)...（是否保留默认的学习计划待定）}
 	提供WorkList的读写方法
 	字段：
 		List<WorkPlan> plans//存储工作计划
 	方法：
-			静态方法：
-		public static int getDays(WorkPlan w)//获取计划天数
+	静态方法：
+	public static int getDays(WorkPlan w)//获取计划天数
         public static void setDays(WorkPlan w, int days)//设置天数
         public static string getName(WorkPlan w)//获取计划名称
         public static void setName(WorkPlan w, string name)//设置计划名称
@@ -63,21 +61,15 @@
         public void StartClock()	// 定时器开始倒计时
         public void SucceedFinishedEvent()		// 如若成功时的操作（此处已被添加到Clock内部的事件内）
         public void StopClock()	// 定时器被人为停止后的操作
-## WorkPlan类（）     2018/12/24/10.05   赵彪改
+## WorkPlan类（）     2018/12/26/ 18：00   周鹏川改
       属性：计划的名称(workName);string
-                设定计划完成需要的天数（dayTime）;int
- 	动态的番茄数组（tomatolist）；
-	toDolist  动态的数组（记录便条，增加，删除便条）
-      方法:  WorkPlan(string wkn,int dt)    //有参的构造函数
-	WorkPlan()                             //无参的构造函数
-public void addTomato(float Time,int signNumber) //给番茄数组增加一个新的番茄
-## Tomato类:
-                属性：DayRecordlist   记录每天番茄状态的动态数组，-1为不存在的番茄，0为未完成的番茄，1为已完成的番茄
- 	          float tomatoTime（番茄的时间）
- 	          int signNumber     (这个番茄的标志)
-                方法：Tomato(float Time,int sN)   //必须提供一个有参数的构造方法
-## 工作的背景音乐
-                
-
-	
-	
+            设定计划完成需要的天数（dayTime）;long
+ 	    番茄列表（tomatolist）；
+      方法:  WorkPlan(string wkn,long dt)    //有参的构造函数
+	     WorkPlan()                      //无参的构造函数
+	public void addTomato(float Time,int signNumber) //给番茄数组增加一个新的番茄
+## TomatoList类:
+                属性：list<TCondition> tcondition   记录每天番茄状态的动态数组，con为-1时为不存在的番茄，0为未完成的番茄，1为已完成的番茄
+ 	          long tomatoTime（番茄的时间）
+ 	          long signNumber     (这个番茄的标志)
+                方法：Tomato(long Time,long sN)   //必须提供一个有参数的构造方法
