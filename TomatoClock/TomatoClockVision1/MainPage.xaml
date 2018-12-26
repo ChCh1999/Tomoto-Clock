@@ -8,91 +8,90 @@
     mc:Ignorable="d">
 
 
-      <Grid>
-            <Grid.RowDefinitions>
-                  <RowDefinition Height="auto"/>
-                  <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <RelativePanel>
-                  <Button Name="HamburgerButton" 
+        <RelativePanel>
+            <Button Name="HamburgerButton" 
                           RelativePanel.AlignLeftWithPanel="True"
                           FontFamily="Segoe MDL2 Assets" 
-                          FontSize="36"
+                          FontSize="34"
                           Content="&#xE700;"
-                          Click="HamburgerButton_Click" HorizontalAlignment="Stretch" Margin="0,0,-0.2,-0.2"/>
+                          Click="HamburgerButton_Click" HorizontalAlignment="Stretch" Margin="0,0,-0.6,0" VerticalAlignment="Center"/>
 
 
-                  <Button Name="BackButton"
+            <Button Name="BackButton"
                           RelativePanel.RightOf="HamburgerButton"
                           FontFamily="Segoe MDL2 Assets"
-                          FontSize="36"
+                          FontSize="34"
                           Content="&#xE0C4;"
-                          Click="BackButton_Click"/>
+                          Click="BackButton_Click" HorizontalAlignment="Center" Height="47" VerticalAlignment="Center"/>
 
-                  <TextBlock Name="TitleTextBlock"
+            <TextBlock Name="TitleTextBlock"
                              RelativePanel.RightOf="BackButton"
                              FontSize="28"
                              FontWeight="Bold"
                              Margin="20,5,0,0"/>
 
-                  <Button Name="SearchButton"
+            <Button Name="SearchButton"
                           RelativePanel.AlignRightWithPanel="True"
                           FontFamily="Segoe MDL2 Assets"
-                          FontSize="36"
-                          Content="&#xE1A3;"/>
+                          FontSize="32"
+                          Content="&#xE1A3;" HorizontalAlignment="Center" VerticalAlignment="Center" Height="50"/>
 
-                  <TextBox Name="SearchTextBox"
+            <TextBox Name="SearchTextBox"
                            RelativePanel.LeftOf="SearchButton"
-                           Height="48"
                            Width="200"
                            FontSize="24"
-                           PlaceholderText="Search"/>
-            </RelativePanel>
+                           PlaceholderText="Search" Margin="-0.2,0,0.2,0" VerticalAlignment="Top" Height="50" HorizontalAlignment="Stretch"/>
+        </RelativePanel>
 
-            <SplitView Grid.Row="1" 
+        <SplitView Grid.Row="1" 
                        Name="MySplitView"
                        DisplayMode="CompactOverlay"
                        OpenPaneLength="250"
                        CompactPaneLength="56">
-                  <SplitView.Pane>
-                        <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
-                              <ListBoxItem Name="TomatoList">
-                                    <StackPanel Orientation="Horizontal">
-                                          <TextBlock  FontFamily="Segoe MDL2 Assets"
-                                                      FontSize="36"
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBoxItem Name="TomatoList">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  FontFamily="Segoe MDL2 Assets"
+                                                      FontSize="30"
                                                       Text="&#xE762;"/>
 
-                                          <TextBlock FontSize="24" Text="Tomato List" Margin="20,0,0,0"/>
-                                    </StackPanel>
-                              </ListBoxItem>
+                            <TextBlock FontSize="20" Text="Tomato List" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListBoxItem>
 
-                              <ListBoxItem Name="TomatoHistory">
-                                    <StackPanel Orientation="Horizontal">
-                                          <TextBlock  FontFamily="Segoe MDL2 Assets"
-                                                      FontSize="36"
+                    <ListBoxItem Name="TomatoHistory">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  FontFamily="Segoe MDL2 Assets"
+                                                      FontSize="30"
                                                       Text="&#xE776;"/>
 
-                                          <TextBlock FontSize="24" Text="Tomato History" Margin="20,0,0,0"/>
-                                    </StackPanel>
-                              </ListBoxItem>
+                            <TextBlock FontSize="20" Text="Tomato History" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListBoxItem>
 
-                              <ListBoxItem Name="TemporaryTomato">
-                                    <StackPanel Orientation="Horizontal">
-                                          <TextBlock  FontFamily="Segoe MDL2 Assets"
-                                                      FontSize="36"
+                    <ListBoxItem Name="TemporaryTomato">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock  FontFamily="Segoe MDL2 Assets"
+                                                      FontSize="30"
                                                       Text="&#xEB7E;"/>
 
-                                          <TextBlock FontSize="24" Text="Tomato History" Margin="20,0,0,0"/>
-                                    </StackPanel>
-                              </ListBoxItem>
-                        </ListBox>
+                            <TextBlock FontSize="20" Text="Tomato History" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
 
-                  </SplitView.Pane>
-                  <SplitView.Content>
-                        <Frame Name="MyFrame"></Frame>
-                  </SplitView.Content>
-            </SplitView>
-      </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="MyFrame"></Frame>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
 
 </Page>

@@ -1,27 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace TomatoClock
 {
-    class WorkPlan
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("historylist.workplan")]
+    public partial class WorkPlan
     {
-        public string workName { get; set;}
-        public int dayTime { get; set; }
-        public List<String> toDolist = new List<string>();       //给每个计划增加一个相当于便条式的属性
-        public List<Tomato> tomatolist = new List<Tomato>();    //tomato的动态数组，每个tomato都有一个自己的时间
-        public WorkPlan(string wkn,int dt)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public WorkPlan()
         {
-            workName = wkn;
-            dayTime = dt;
+            tomatolist = new List<TomatoList>();
         }
-        public WorkPlan() { }
-        public void addTomato(TimeSpan Time,int signNumber)        //将一个番茄加入到番茄的list中
+
+        [Key]
+        [Column(TypeName = "uint")]
+        public long wpid { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string workName { get; set; }
+
+        [Column(TypeName = "uint")]
+        public long NumofDay { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual List<TomatoList> tomatolist { get; set; }
+
+        public WorkPlan(string wname, long num)
         {
-            Tomato t=new Tomato(Time, signNumber);
-            tomatolist.Add(t);
+            tomatolist = new List<TomatoList>();
+            workName = wname;
+            NumofDay = num;
         }
     }
 }
