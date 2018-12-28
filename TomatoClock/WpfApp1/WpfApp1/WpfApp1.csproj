@@ -164,5 +164,11 @@
   <ItemGroup>
     <Resource Include="Assets\HitoryBg.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TomatoClock\TomatoClock.csproj">
+      <Project>{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}</Project>
+      <Name>TomatoClock</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

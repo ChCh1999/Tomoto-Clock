@@ -85,6 +85,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TCondition.cs" />
+    <Compile Include="TimeCount.cs" />
     <Compile Include="TomatoList.cs" />
     <Compile Include="WorkPlan.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
