@@ -24,17 +24,15 @@ namespace TomatoClock
         }
         
         [Key]
-        public short wpid { get; set; }
+        [Column(TypeName = "uint")]
+        public long wpid { get; set; }
 
         [Required]
         [StringLength(20)]
         public string workName { get; set; }
 
-        [Required]
-        [StringLength(8)]
-        public string startTime { get; set; }
-
-        public short NumofDay { get; set; }
+        [Column(TypeName = "uint")]
+        public long NumofDay { get; set; }
 
         [Column(TypeName ="varchar")]
         [StringLength(8)]
@@ -43,12 +41,11 @@ namespace TomatoClock
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual List<TomatoList> tomatolist { get; set; }
 
-        public WorkPlan(string wname, string startTime, short NofDay, List<TomatoList> lists)
+        public WorkPlan(string wname, long num)
         {
+            tomatolist = new List<TomatoList>();
             workName = wname;
-            this.startTime = startTime;
-            NumofDay = NofDay;
-            tomatolist = lists;
+            NumofDay = num;
         }
     }
 }

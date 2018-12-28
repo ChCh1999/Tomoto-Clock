@@ -29,7 +29,7 @@ namespace TomatoClock
         // 添加WP
         public void addWorkPlan(String name, int days, List<TomatoList> tomatoList)
         {
-            WorkPlan workPlan = new WorkPlan(name, days,tomatoList);
+            WorkPlan workPlan = new WorkPlan(name, days);
             history.Add(workPlan);
         }
         
