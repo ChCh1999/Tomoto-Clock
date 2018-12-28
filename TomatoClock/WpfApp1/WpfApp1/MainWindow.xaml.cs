@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TomatoClock;
 
 namespace WpfApp1
 {
@@ -21,7 +20,7 @@ namespace WpfApp1
       /// </summary>
       public partial class MainWindow : Window
       {
-            ClockService clockService = new ClockService();
+
             public MainWindow()
             {
                   InitializeComponent();
@@ -45,13 +44,12 @@ namespace WpfApp1
 
             private void ListButton_Click(object sender, RoutedEventArgs e)
             {
-                  this.MyFrame.Navigate(new Uri("TomatoList.xaml", UriKind.Relative));
+                   this.MyFrame.Navigate(new Uri("TomatoList.xaml", UriKind.Relative));
                   BitmapImage bti = new BitmapImage();
                   bti.BeginInit();
                   bti.UriSource = new Uri("Assets/bg2.jpg", UriKind.Relative);
                   bti.EndInit();
                   BgImage.Source = bti;
-                 
             }
 
             private void TempButton_Click(object sender, RoutedEventArgs e)
