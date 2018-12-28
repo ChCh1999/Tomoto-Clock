@@ -10,13 +10,11 @@ namespace TomatoClock
     public partial class TCondition
     {
         [Key]
-        [Column(Order = 0)]
-        public sbyte con { get; set; }
+        public short tcid { get; set; }
 
-        [Key]
-        [Column(Order = 1, TypeName = "uint")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long toid { get; set; }
+        public short? toid { get; set; }
+
+        public sbyte con { get; set; }
 
         public virtual TomatoList tomatolist { get; set; }
 

@@ -12,20 +12,23 @@ namespace TomatoClock
         {
         }
 
+        public virtual DbSet<TCondition> tcondition { get; set; }
         public virtual DbSet<TomatoList> tomatolist { get; set; }
         public virtual DbSet<WorkPlan> workplan { get; set; }
-        public virtual DbSet<TCondition> tcondition { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TomatoList>()
                 .HasMany(e => e.tcondition)
-                .WithRequired(e => e.tomatolist)
-                .HasForeignKey(e => e.toid)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.tomatolist)
+                .HasForeignKey(e => e.toid);
 
             modelBuilder.Entity<WorkPlan>()
                 .Property(e => e.workName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<WorkPlan>()
+                .Property(e => e.startTime)
                 .IsUnicode(false);
 
             modelBuilder.Entity<WorkPlan>()
