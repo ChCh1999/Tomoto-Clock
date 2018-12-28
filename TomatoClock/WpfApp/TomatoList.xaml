@@ -23,7 +23,8 @@
                                       VerticalAlignment="Bottom"
                                       Name="CreateNewItem" 
                                       BorderBrush="White"
-                                      BorderThickness="2"
+                                      BorderThickness="1"
+                                      FontSize="16"
                                       Foreground="White"
                                       Margin="0,30,0,0"
                                       Click="CreateNewItem_Click"/>

@@ -1,0 +1,29 @@
+﻿<Page x:Class="WpfApp1.History"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="360"
+      Title="History">
+
+    <Grid>
+
+        <StackPanel Orientation="Vertical">
+            <WrapPanel Name="title" Height="73">
+                <Label Content="工作计划：" FontSize="18" Height="30" Width="90" Margin="30,20,1,0"/>
+                <ComboBox Name="WorkPlans" FontSize="18" Height="30" Width="120" Margin="5,20,20,0" SelectionChanged="WorkPlans_SelectionChanged"/>
+            </WrapPanel>
+            
+            <WrapPanel HorizontalAlignment="Center"  
+                Name="HistoryList" >
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="日期" Width="100" FontSize="18" Foreground="White" Margin="10, 0, 0, 0"/>
+                    <TextBlock Text="完成进度" Width="100" FontSize="18" Foreground="White" Margin="100, 0, 0, 0"/>
+                </WrapPanel>
+            </WrapPanel>
+        </StackPanel>
+
+    </Grid>
+</Page>

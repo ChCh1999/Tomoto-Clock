@@ -35,9 +35,9 @@ namespace TomatoClock
 
         public TimeSpan TotalTime;
 
-        public TomatoList(long t ,long s)
+        public TomatoList(long t ,long s, List<TCondition> list)
         {
-            tcondition = new List<TCondition>();
+            tcondition = list;
             tomatoTime = t;
             TotalTime = new TimeSpan(0, 0, (int)t);
             signNum = s;

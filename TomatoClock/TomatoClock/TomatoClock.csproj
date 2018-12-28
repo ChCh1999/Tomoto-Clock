@@ -87,6 +87,9 @@
     <Compile Include="TCondition.cs" />
     <Compile Include="TomatoList.cs" />
     <Compile Include="WorkPlan.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

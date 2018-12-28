@@ -10,8 +10,8 @@ namespace TomatoClock
     public partial class TCondition
     {
         [Key]
-        [Column(Order = 0)]
-        public sbyte con { get; set; }
+        [Column(Order = 0,TypeName ="int")]
+        public int con { get; set; }
 
         [Key]
         [Column(Order = 1, TypeName = "uint")]

@@ -10,6 +10,7 @@ namespace TomatoClock
         public HistoryDB()
             : base("name=HistoryDB")
         {
+            Database.CreateIfNotExists();
         }
 
         public virtual DbSet<TomatoList> tomatolist { get; set; }

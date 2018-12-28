@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using TomatoClock;
 namespace WpfApp1
 {
     /// <summary>
@@ -20,10 +20,19 @@ namespace WpfApp1
     /// </summary>
     public partial class TomatoList : Page
     {
+        ClockService clockService = new ClockService();
         public TomatoList()
         {
             InitializeComponent();
-             AddItem("王仁杰", "20 hour", "2 / 3");                              //将tomatolist内容导出，写成一个函数调用AddItem方法
+            List<WorkPlan> allWP = clockService.getAllWorkPlan();
+            foreach (WorkPlan wp in allWP)
+            {
+                int day = clockService.GetDays(wp);
+                int finished = clockService.getFinishedTomatoSignNum(wp, day).Count();
+                int active = clockService.getActiveTomatoSignNum(wp, day).Count();
+                AddItem(wp.workName, "第"+(day+1)+"天" + "/" +wp.NumofDay, finished+"/"+active);
+            }
+                                      //将tomatolist内容导出，写成一个函数调用AddItem方法
          }
 
             private void CreateNewItem_Click(object sender, RoutedEventArgs e)
@@ -42,7 +51,7 @@ namespace WpfApp1
                   Border border = new Border();
                   Thickness margin1 = new Thickness(0, 10, 0, 0);
                   border.Margin = margin1;
-                  border.BorderThickness = new Thickness(2);
+                  border.BorderThickness = new Thickness(1);
                   border.BorderBrush = new SolidColorBrush(Colors.White);                                     //加入边框
 
                   TextBlock nameBlock = new TextBlock();
