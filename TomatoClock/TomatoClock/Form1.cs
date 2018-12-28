@@ -15,6 +15,13 @@ namespace TomatoClock
         public Form1()
         {
             InitializeComponent();
+            ClockService my = new ClockService();
+            List<TomatoList> tomatos = new List<TomatoList>();
+            List<TCondition> TC = new List<TCondition>();
+            TC.Add(new TCondition());
+            TomatoList to=new TomatoList(1000,0,TC);
+            tomatos.Add(to);
+            my.addWorkPlan("尝试", 10, tomatos);
         }
     }
 }
