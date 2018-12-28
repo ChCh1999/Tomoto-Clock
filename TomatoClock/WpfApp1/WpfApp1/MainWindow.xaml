@@ -1,0 +1,78 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        AllowsTransparency="True" WindowStyle="None"
+        Title="TomatoClock" Height="600" Width="360" >
+
+      
+      <Grid>
+            <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" 
+                        Name="TitleBar"
+                        MouseMove="TitleBar_MouseMove"
+                        Orientation="Horizontal"
+                        Panel.ZIndex="5">
+                  <Image Source="Assets\番茄.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                  <TextBlock Margin="5,0,0,0" 
+                             VerticalAlignment="Center" 
+                             FontSize="24" 
+                             Text="番茄钟"/>
+                  <TextBlock Text="                                                             "/>
+                  <Button Name="ExitButton" Background="Transparent" BorderThickness="0" Click="ExitButton_Click" >
+                        <Image  Source="Assets\结束.png"   HorizontalAlignment="Center"/>
+                  </Button>
+
+
+            </StackPanel>
+
+            <Image Name="BgImage" Source="Assets\bg1.jpg" Grid.RowSpan="3" Stretch="Fill"  Panel.ZIndex="-1"/>
+
+            <StackPanel Name="MenuStackPanel" Grid.Row="1" Orientation="Horizontal"  Panel.ZIndex="5">
+                  <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Left" >
+                        <Button     Name="HistoryButton"
+                                Background="Transparent" 
+                                Foreground="#E1A679" 
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="35" 
+                                Content="&#xE776;"
+                                BorderThickness="0"
+                                Click="HistoryButton_Click"/>
+                  </StackPanel>
+
+                  <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Background="Transparent" 
+                                Name="ListButton"
+                                Foreground="#E1A679" 
+                                FontFamily="Segoe MDL2 Assets" 
+                                FontSize="35"
+                                Content="&#xE700;" 
+                                BorderThickness="0"
+                                Click="ListButton_Click"/>
+                  </StackPanel>
+
+                  <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                        <Button  Name="TempButton"
+                                Background="Transparent" 
+                                Foreground="#E1A679" 
+                                FontFamily="Segoe MDL2 Assets"
+                                FontSize="35" 
+                                Content="&#xE768;" 
+                                BorderThickness="0" 
+                                 Click="TempButton_Click"/>
+                  </StackPanel>
+            </StackPanel>
+
+
+            <Frame Name="MyFrame"  NavigationUIVisibility="Hidden" Grid.Row="2" Panel.ZIndex="5" />
+
+      </Grid>
+</Window>
