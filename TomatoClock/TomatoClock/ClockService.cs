@@ -7,19 +7,13 @@ using System.Timers;
 
 namespace TomatoClock
 {
-    public class ClockService
+    class ClockService
     {
         //工作计划相关操作
         public HistoryService history = new HistoryService();
         public WorkPlan currentWP;//当前工作计划
-        public List<WorkPlan> getAllWorkPlan() {
-            return history.GetAllWorkPlan();
-        }
-        //获取天数
-        public int GetDays(WorkPlan wp)
-        {
-            return history.getdays(wp);
-        }
+        // TODO history.init();
+
         //根据名称查询工作
         public WorkPlan chooseWorkPlan(String WPName)
         {
@@ -29,7 +23,16 @@ namespace TomatoClock
         // 添加WP
         public void addWorkPlan(String name, int days, List<TomatoList> tomatoList)
         {
-            WorkPlan workPlan = new WorkPlan(name, days,tomatoList);
+            WorkPlan workPlan = new WorkPlan(name, days);
+            workPlan.tomatolist = tomatoList;
+            TCondition condition = new TCondition();
+            foreach(var tomato in tomatoList)
+            {
+                for (int i = 0; i < days; i++)
+                {
+                    tomato.tcondition.Add(condition);
+                }
+            }
             history.Add(workPlan);
         }
         
@@ -64,30 +67,36 @@ namespace TomatoClock
         }
 
         //具体番茄的操作
-        public void deleteTomato(string wp, int sn, int day)
+        public void deleteTomato(WorkPlan wp, int sn, int day)
         {
-            history.DeleteTomato(wp, sn);
+            // history.DeleteTomato(wp, sn, day);
         }
 
-        public void addTomato(WorkPlan wp, int seconds)
+        public void addTomato(WorkPlan wp, TimeSpan ts, int day)
         {
-            history.addTomato(wp.workName,seconds);
+            // history.AddTomato(wp, ts, day);
         }
 
         //获取某天某计划所有番茄的代号
-        public List<int> getFinishedTomatoSignNum(WorkPlan wp, int day)
-        {
-            return history.getFinishedTomatoSignNum(wp,day);
-        }
         public List<int> getActiveTomatoSignNum(WorkPlan wp, int day)
         {
-            return history.getActiveTomatoSignNum(wp, day);
+            List<int> result = new List<int>();
+            // result = (from Tomato a in wp.tomatolist where a.DayRecordlist[day] != -1 select a.signNumber).ToList();
+            return result;
         }
 
         //获取某番茄某天的状态
-        public bool GetTomatoCon(WorkPlan wp, int day, int sn)
+        public bool showTomato(WorkPlan wp, int day, int tomatoSignNumber)
         {
-            return history.getTomatoCon(wp.workName, day, sn);
+            TomatoList target = history.GetTomato(wp, tomatoSignNumber);
+            if (target == null)
+            {
+                return false;       
+            }
+            if (target.tcondition[day - 1].con == 1)
+                return true;
+            else
+                return false;
         }
 
         //时钟相关操作

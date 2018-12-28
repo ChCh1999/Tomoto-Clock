@@ -35,32 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data.EntityFramework, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.13\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,14 +57,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateTomato.xaml.cs">
-      <DependentUpon>CreateTomato.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="HistoryItemDetail.xaml.cs">
-      <DependentUpon>HistoryItemDetail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ItemDetail.xaml.cs">
-      <DependentUpon>ItemDetail.xaml</DependentUpon>
+    <Compile Include="ChooseTomato.xaml.cs">
+      <DependentUpon>ChooseTomato.xaml</DependentUpon>
     </Compile>
     <Compile Include="Temp.xaml.cs">
       <DependentUpon>Temp.xaml</DependentUpon>
@@ -95,19 +66,11 @@
     <Compile Include="TomatoList.xaml.cs">
       <DependentUpon>TomatoList.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateTomato.xaml">
+    <Page Include="ChooseTomato.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="History.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HistoryItemDetail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ItemDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,7 +116,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -189,8 +151,8 @@
     <Resource Include="Assets\HitoryBg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TomatoClock\TomatoClock.csproj">
-      <Project>{16e4a1ef-95d0-4e95-ade3-6cece7e5435f}</Project>
+    <ProjectReference Include="..\..\TomatoClock\TomatoClock.csproj">
+      <Project>{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}</Project>
       <Name>TomatoClock</Name>
     </ProjectReference>
   </ItemGroup>
