@@ -12,22 +12,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using TomatoClock;
 namespace WpfApp1
 {
     /// <summary>
-    /// History.xaml 的交互逻辑
+    /// TomatoList.xaml 的交互逻辑
     /// </summary>
-    public partial class History : Page
+    public partial class TomatoList : Page
     {
-        static int i = 0;
-        public History()
+        ClockService clockService = new ClockService();
+        public TomatoList()
         {
             InitializeComponent();
-        }
+            List<WorkPlan> allWP = clockService.getAllWorkPlan();
+            foreach (WorkPlan wp in allWP)
+            {
+                int day = clockService.GetDays(wp);
+                int finished = clockService.getFinishedTomatoSignNum(wp, day).Count();
+                int active = clockService.getActiveTomatoSignNum(wp, day).Count();
+                AddItem(wp.workName, "第"+(day+1)+"天" + "/" +wp.NumofDay, finished+"/"+active);
+            }
+                                      //将tomatolist内容导出，写成一个函数调用AddItem方法
+         }
 
-        private void AddItem(String name, String time, String process)                                        //添加项目
-        {
+            private void CreateNewItem_Click(object sender, RoutedEventArgs e)
+            {
+                                         
+            }
+
+            
+
+            private void AddItem(String name, String time, String process)                                        //添加项目
+            {
                   WrapPanel wrapPanel = new WrapPanel();
                   wrapPanel.Orientation = Orientation.Horizontal;
                   wrapPanel.HorizontalAlignment = HorizontalAlignment.Center;
@@ -35,7 +51,7 @@ namespace WpfApp1
                   Border border = new Border();
                   Thickness margin1 = new Thickness(0, 10, 0, 0);
                   border.Margin = margin1;
-                  border.BorderThickness = new Thickness(2);
+                  border.BorderThickness = new Thickness(1);
                   border.BorderBrush = new SolidColorBrush(Colors.White);                                     //加入边框
 
                   TextBlock nameBlock = new TextBlock();
@@ -48,7 +64,7 @@ namespace WpfApp1
                   timeBlock.Text = time;
                   timeBlock.FontSize = 16;
                   timeBlock.Foreground = Brushes.White;
-                  Thickness margin = new Thickness(20, 0, 0, 0);
+                  Thickness margin = new Thickness(20,0,0,0);
                   timeBlock.Margin = margin;
                   wrapPanel.Children.Add(timeBlock);
 
@@ -60,16 +76,16 @@ namespace WpfApp1
                   wrapPanel.Children.Add(processBlock);
 
                   border.Child = wrapPanel;
-                  border.GotMouseCapture += ShowItemDetail(border);
-                  this.HistoryList.Children.Add(border);
+                  //border.GotMouseCapture += ShowItemDetail(border);
 
+                  this.ListWrapPanel.Children.Add(border);
 
             }
 
-            private MouseEventHandler ShowItemDetail(Border border)
-            {
+            //private MouseEventHandler ShowItemDetail(Border border)
+            //{
 
-                  throw new NotImplementedException();
-            }
+            //      throw new NotImplementedException();
+            //}
       }
 }

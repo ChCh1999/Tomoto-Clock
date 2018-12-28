@@ -27,12 +27,10 @@
                              FontSize="24" 
                              Text="番茄钟"/>
                   <TextBlock Text="                                                             "/>
-                  <Button Name="ExitButton" Background="Transparent" BorderThickness="0" Click="ExitButton_Click" >
-                        <Image  Source="Assets\结束.png"   HorizontalAlignment="Center"/>
-                  </Button>
-
-
-            </StackPanel>
+            <Button Name="ExitButton" Background="Transparent" BorderThickness="0" Click="ExitButton_Click" >
+                <Image Source="Assets/结束.png" HorizontalAlignment="Center"/>
+            </Button>
+        </StackPanel>
 
             <Image Name="BgImage" Source="Assets\bg1.jpg" Grid.RowSpan="3" Stretch="Fill"  Panel.ZIndex="-1"/>
 

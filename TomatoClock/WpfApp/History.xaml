@@ -9,20 +9,19 @@
       Title="History">
 
     <Grid>
+
         <StackPanel Orientation="Vertical">
             <WrapPanel Name="title" Height="73">
                 <Label Content="工作计划：" FontSize="18" Height="30" Width="90" Margin="30,20,1,0"/>
-                <ComboBox x:Name="WorkPlans" FontSize="18" Height="30" Width="120" Margin="5,20,20,0" SelectionChanged="WorkPlans_SelectionChanged"/>
+                <ComboBox Name="WorkPlans" FontSize="18" Height="30" Width="120" Margin="5,20,20,0" SelectionChanged="WorkPlans_SelectionChanged"/>
             </WrapPanel>
-
-            <WrapPanel HorizontalAlignment="Center"   >
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="24">
-                    <TextBlock Text="日期" Width="100" FontSize="18" Foreground="White" Margin="10, 0, 0, 0"/>
-                    <TextBlock Text="完成进度" Width="100" FontSize="18" Foreground="White" Margin="80, 0, 0, 0"/>
-                </WrapPanel>
-            </WrapPanel>
+            
             <WrapPanel HorizontalAlignment="Center"  
                 Name="HistoryList" >
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="日期" Width="100" FontSize="18" Foreground="White" Margin="10, 0, 0, 0"/>
+                    <TextBlock Text="完成进度" Width="100" FontSize="18" Foreground="White" Margin="100, 0, 0, 0"/>
+                </WrapPanel>
             </WrapPanel>
         </StackPanel>
 

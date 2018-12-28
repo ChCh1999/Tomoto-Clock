@@ -54,7 +54,17 @@ namespace WpfApp1
             }
 
 
-       
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+            {
+                  StartButton.Visibility = Visibility.Collapsed;
+                  StopButton.Visibility = Visibility.Visible;
+            //开始计时，并计入history
+            //将TimeText.Text与倒计时相绑定
+
+            //新写的
+            //这个是执行倒计时的操作
+            MainWin_Loaded(sender,e);
+        }
 
         //新写的
         private void MainWin_Loaded(object sender, RoutedEventArgs e)
@@ -111,18 +121,7 @@ namespace WpfApp1
             //点击这个之后，就会停止
             timer.Stop();
             }
-        private void StartButton_Click(object sender, RoutedEventArgs e)
-        {
-            StartButton.Visibility = Visibility.Collapsed;
-            StopButton.Visibility = Visibility.Visible;
-            //开始计时，并计入history
-            //将TimeText.Text与倒计时相绑定
-
-            //新写的
-            //这个是执行倒计时的操作
-            MainWin_Loaded(sender, e);
-        }
-    }
+      }
             
 
 

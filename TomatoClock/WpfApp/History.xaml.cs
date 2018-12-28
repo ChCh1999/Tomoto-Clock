@@ -20,13 +20,13 @@ namespace WpfApp1
     /// </summary>
     public partial class History : Page
     {
-        ClockService clockService = new ClockService();
+        static int i = 0;
         public History()
         {
             InitializeComponent();
-           
+            ClockService clockService = new ClockService();
             this.WorkPlans.ItemsSource = clockService.getAllWorkPlan().Select(a => a.workName).ToList();
-            //AddItem("日期", "完成进度");
+            AddItem("日期", "完成进度");
         }
 
         private void AddItem(String name, String process)                                        //添加项目
@@ -44,7 +44,7 @@ namespace WpfApp1
             wrapPanel.Children.Add(nameBlock);
 
             TextBlock processBlock = new TextBlock();
-            processBlock.Margin = new Thickness(80, 0, 0, 0); ;
+            processBlock.Margin = new Thickness(100, 0, 0, 0); ;
             processBlock.Foreground = Brushes.White;
             processBlock.FontSize = 18;
             processBlock.Width = 100;
@@ -57,32 +57,7 @@ namespace WpfApp1
 
         private void WorkPlans_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            WorkPlan selectedWP = clockService.chooseWorkPlan(WorkPlans.SelectedItem.ToString());
-            int days = clockService.GetDays(selectedWP);
-            if (days < 7)
-            {
-                for(int i = 0; i < days;i++)
-                {
-                    int finished = clockService.getFinishedTomatoSignNum(selectedWP,days-i).Count();
-                    int active = clockService.getActiveTomatoSignNum(selectedWP, days-i).Count();
-                    if (i == 0)
-                        AddItem("today", finished + "/" + active);
-                    else
-                        this.AddItem(i + "天前", finished + "/" + active);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    int finished = clockService.getFinishedTomatoSignNum(selectedWP, days - i).Count();
-                    int active = clockService.getActiveTomatoSignNum(selectedWP, days - i).Count();
-                    if (i == 0)
-                        AddItem("today", finished + "/" + active);
-                    else
-                        this.AddItem(i + "天前", finished + "/" + active);
-                }
-            }
+            
         }
 
         //private MouseEventHandler ShowItemDetail(Border border)
