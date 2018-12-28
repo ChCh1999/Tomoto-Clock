@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,15 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TomatoClock;
+using System.Windows.Threading;
 
 namespace WpfApp1
 {
+      
     /// <summary>
     /// Temp.xaml 的交互逻辑
     /// </summary>
     public partial class Temp : Page
     {
-             public Temp()
+        //新写的
+        private TimeCount timeCount;
+        private DispatcherTimer timer;
+        //新写的
+        public Temp()
             {
                   InitializeComponent();
                   String[] arry = { "你越不在乎别人的看法，生活就会变的越简单。",
@@ -41,23 +49,77 @@ namespace WpfApp1
                    Random rd = new Random();
                    int i = rd.Next(0, 15);
                   JiTang.Text = arry[i];
+            
 
             }
 
-            private void StartButton_Click(object sender, RoutedEventArgs e)
+
+        private void StartButton_Click(object sender, RoutedEventArgs e)
             {
                   StartButton.Visibility = Visibility.Collapsed;
                   StopButton.Visibility = Visibility.Visible;
-                  //开始计时，并计入history
-                  //将TimeText.Text与倒计时相绑定
-            }
+            //开始计时，并计入history
+            //将TimeText.Text与倒计时相绑定
 
-            private void StopButton_Click(object sender, RoutedEventArgs e)
+            //新写的
+            //这个是执行倒计时的操作
+            MainWin_Loaded(sender,e);
+        }
+
+        //新写的
+        private void MainWin_Loaded(object sender, RoutedEventArgs e)
+         {
+            //设置定时器
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(10000000);   //事件间隔为一秒钟
+            timer.Tick += new EventHandler(timer_Tick);
+             
+            //转换成秒数
+             Int32 hour = Convert.ToInt32(HourArea.Text);
+             Int32 minute = Convert.ToInt32(MinuteArea.Text);
+             Int32 second = Convert.ToInt32(SecondArea.Text);
+
+            //处理倒计时的类
+            timeCount = new TimeCount(hour * 3600 + minute * 60 + second);
+             CountDown += new CountDownHandler(timeCount.ProcessCountDown);
+
+             //开启定时器
+             timer.Start();
+        }
+        //委托
+        public delegate bool CountDownHandler();
+        //事件
+        public event CountDownHandler CountDown;
+        public bool OnCountDown()
+        {
+             if (CountDown != null)
+                return CountDown();
+ 
+            return false;
+        }
+
+        //Timer触发的事件
+         private void timer_Tick(object sender, EventArgs e)
+         {
+             if (OnCountDown())
+             {
+                 HourArea.Text = timeCount.GetHour();
+                 MinuteArea.Text = timeCount.GetMinute();
+                 SecondArea.Text = timeCount.GetSecond();
+             }
+             else
+                 timer.Stop();
+         }
+        //新写的
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
             {
                   StartButton.Visibility = Visibility.Visible;
                   StopButton.Visibility = Visibility.Collapsed;
-                  TimeText.Text = "00:45:00";
-                  //不计入history
+            //不计入history
+
+            //点击这个之后，就会停止
+            timer.Stop();
             }
       }
             
