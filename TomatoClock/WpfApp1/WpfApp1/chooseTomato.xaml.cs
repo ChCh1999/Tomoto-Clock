@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using TomatoClock;
 namespace WpfApp1
 {
     /// <summary>
@@ -19,9 +19,26 @@ namespace WpfApp1
     /// </summary>
     public partial class chooseTomato : Window
     {
+        
+        string current;
+        short tid;
+        ClockService clockService = new ClockService();
         public chooseTomato()
         {
             InitializeComponent();
+        }
+        public string getName(string name)
+        {
+            current = name;
+            WorkPlan wp = clockService.chooseWorkPlan(current);
+            int day = clockService.GetDays(wp);
+            tomatos.ItemsSource = wp.tomatolist.Where(a=>a.tcondition[day].con==0).Select(a => a.tomatoTime/60+"min").ToList();
+            return current;
+        }
+
+        private void tomatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

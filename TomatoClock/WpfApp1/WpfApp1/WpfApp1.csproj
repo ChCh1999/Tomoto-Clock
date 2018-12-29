@@ -83,9 +83,6 @@
     <Compile Include="chooseTomato.xaml.cs">
       <DependentUpon>chooseTomato.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CreateTomato.xaml.cs">
-      <DependentUpon>CreateTomato.xaml</DependentUpon>
-    </Compile>
     <Compile Include="HistoryItemDetail.xaml.cs">
       <DependentUpon>HistoryItemDetail.xaml</DependentUpon>
     </Compile>
@@ -99,10 +96,6 @@
       <DependentUpon>TomatoList.xaml</DependentUpon>
     </Compile>
     <Page Include="chooseTomato.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CreateTomato.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

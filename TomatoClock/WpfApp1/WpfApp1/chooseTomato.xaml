@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="chooseTomato" Height="260" Width="300" WindowStartupLocation="CenterOwner">
-    <Grid>
-        
+    <Grid RenderTransformOrigin="0.533,0.499">
+        <ComboBox HorizontalAlignment="Left" Name="tomatos" VerticalAlignment="Top" 
+                  Width="120" Margin="109,75,0,0"
+                  SelectionChanged="tomatos_SelectionChanged"/>
+        <Label Content="选择番茄：" Margin="42,75,189.6,129.4" RenderTransformOrigin="0.284,0.472"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="工作计划：" VerticalAlignment="Top" Width="83" Margin="42,30,0,0"/>
+        <Label Content="：" Name="WPName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,30,0,0"/>
+        <Button Content="确认" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="109,143,0,0"/>
+        <Button Content="删除工作计划" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="190,30,0,0"/>
+
     </Grid>
 </Window>

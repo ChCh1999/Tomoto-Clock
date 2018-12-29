@@ -74,13 +74,21 @@ namespace TomatoClock
         public int getdays(WorkPlan wp)
         {
             DateTime dt = DateTime.Now.Date;
-            DateTime start = DateTime.ParseExact(wp.StartDay, "yyyyMMdd", null);
+            DateTime start = DateTime.ParseExact(wp.startTime, "yyyyMMdd", null);
             return (dt - start).Days;
         }
         public List<WorkPlan> GetAllWorkPlan()
         {
             using (var db = new HistoryDB())
+            {
+                //List<WorkPlan> result = db.workplan.Select(a => a).ToList();
+                //if (result.Count > 0)
+                //    return result;
+                //else
+                //    return null;
+                //IQueryable<WorkPlan> w = from wo in db.workplan select wo;
                 return db.workplan.ToList();
+            }
         }
 
         //public List<WorkPlan> QueryBySignNumber(long num)

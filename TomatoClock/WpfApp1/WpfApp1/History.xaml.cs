@@ -21,9 +21,11 @@ namespace WpfApp1
     public partial class History : Page
     {
         ClockService clockService = new ClockService();
+        
         public History()
         {
             InitializeComponent();
+
             this.WorkPlans.ItemsSource = clockService.getAllWorkPlan().Select(a => a.workName).ToList();
         }
 
