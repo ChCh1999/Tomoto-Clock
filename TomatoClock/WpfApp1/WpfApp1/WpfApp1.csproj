@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>tomatoico.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -86,6 +89,7 @@
     <Compile Include="HistoryItemDetail.xaml.cs">
       <DependentUpon>HistoryItemDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ico.cs" />
     <Compile Include="ItemDetail.xaml.cs">
       <DependentUpon>ItemDetail.xaml</DependentUpon>
     </Compile>
@@ -193,6 +197,14 @@
       <Project>{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}</Project>
       <Name>TomatoClock</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\1.png" />
+    <Resource Include="Assets\exit.png" />
+    <Resource Include="Assets\mini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="tomatoico.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
