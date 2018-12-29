@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FEF444B1-7399-4E51-AA51-3B3809872872}</ProjectGuid>
+    <ProjectGuid>{515EB950-1DD8-40E9-95BF-853DD610EAA1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WpfApp1</RootNamespace>
     <AssemblyName>WpfApp1</AssemblyName>
@@ -35,9 +35,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MySql.Data.8.0.13\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MySql.Data.EntityFramework.8.0.13\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,13 +80,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateTomato.xaml.cs">
-      <DependentUpon>CreateTomato.xaml</DependentUpon>
+    <Compile Include="chooseTomato.xaml.cs">
+      <DependentUpon>chooseTomato.xaml</DependentUpon>
     </Compile>
     <Compile Include="HistoryItemDetail.xaml.cs">
       <DependentUpon>HistoryItemDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ico.cs" />
     <Compile Include="ItemDetail.xaml.cs">
       <DependentUpon>ItemDetail.xaml</DependentUpon>
     </Compile>
@@ -73,7 +95,7 @@
     <Compile Include="TomatoList.xaml.cs">
       <DependentUpon>TomatoList.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateTomato.xaml">
+    <Page Include="chooseTomato.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +153,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -157,6 +180,9 @@
     <Resource Include="Assets\番茄.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\结束.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\TempBg.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -167,10 +193,6 @@
       <Project>{16E4A1EF-95D0-4E95-ADE3-6CECE7E5435F}</Project>
       <Name>TomatoClock</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\exit.png" />
-    <Resource Include="Assets\mini.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

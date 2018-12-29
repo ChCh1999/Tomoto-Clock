@@ -19,8 +19,9 @@
             <TextBlock FontSize="18" Text="       既然选择了远方，便只顾风雨兼程"  
                              Foreground="white"
                              Name="JiTang"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center" TextWrapping="Wrap" />
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Center"
+                             TextWrapping="Wrap"/>
 
         </WrapPanel>
 
@@ -160,24 +161,40 @@
             </Grid>
             
             <TextBlock Text="00" x:Name="HourArea" Foreground="White" FontSize="20" HorizontalAlignment="Left" Height="26" Margin="130,71,0,71" TextWrapping="Wrap"  VerticalAlignment="Center" Width="28" RenderTransformOrigin="1.11,-1.138"/>
-            <TextBlock Text="15" Name="MinuteArea" Foreground="White" FontSize="20" Height="26" Margin="170,70,145,70" TextWrapping="Wrap"  VerticalAlignment="Center" RenderTransformOrigin="-0.385,0.168"/>
+            <TextBlock Text="10" Name="MinuteArea" Foreground="White" FontSize="20" Height="26" Margin="170,70,145,70" TextWrapping="Wrap"  VerticalAlignment="Center" RenderTransformOrigin="-0.385,0.168"/>
             <TextBlock Name="SecondArea" FontSize="20" Foreground="White" HorizontalAlignment="Left" Height="27" Margin="210,71,0,70" TextWrapping="Wrap" Text="00" VerticalAlignment="Center" Width="29" RenderTransformOrigin="-1.074,0.474"/>
-            <Label Content=":" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="156,112,0,0" RenderTransformOrigin="0.505,0.307"/>
-            <Label Content=":" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,112,0,0"/>
+            <Label Content=":" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="156,65,0,0" RenderTransformOrigin="0.505,0.307"/>
+            <Label Content=":" FontSize="20" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="196,66,0,0"/>
 
         </Grid>
         <Grid  Grid.Row="2" HorizontalAlignment="Center" >
             <Button HorizontalAlignment="Center" 
-                          Name="Button" 
+                          Name="StartButton" 
                           Click="StartButton_Click" 
                           Background="Transparent" 
                           Content="开始" 
                           FontSize="24"
                           Foreground="White"
-                          Margin="0,0,-0.4,0"
-                          
+                          Margin="0,20,0,0"
                           BorderThickness="0"
-                          Visibility="Visible" Height="32" VerticalAlignment="Bottom" />
+                          Visibility="Visible" Height="32" VerticalAlignment="Top" />
+
+
+            <Button Name="StopButton"
+                                Click="StopButton_Click"
+                                Visibility="Collapsed"
+                                Content="中断"
+                                Background="Transparent"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top"
+                                Foreground="White"
+                                BorderThickness="0"
+                                Margin="0,20,0,0"
+                                FontSize="24"/>
+
+
+
+
         </Grid>
 
 

@@ -8,41 +8,37 @@
         AllowsTransparency="True" WindowStyle="None"
         Title="TomatoClock" Height="600" Width="360" >
 
+      
+      <Grid>
+            <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" 
+            <StackPanel Grid.Row="0" 
                         Name="TitleBar"
                         MouseMove="TitleBar_MouseMove"
                         Orientation="Horizontal"
                         Panel.ZIndex="5">
-            <Image Source="Assets\番茄.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            <TextBlock Margin="5,0,0,0" VerticalAlignment="Center" FontSize="26" Text="番茄钟" Foreground="Orange"/>
-            <TextBlock><Run Text="                      "/><Run Text="    "/><Run Text="  "/><Run Text="      "/><InlineUIContainer>
-                   
-                </InlineUIContainer><Run Text="   "/><Run Text="  "/><InlineUIContainer/><Run Text=" "/><Run Text=" "/><Run Text=" "/><Run Text=" "/><InlineUIContainer>
-                     
-                </InlineUIContainer></TextBlock>
-            <Button Name="Minimize" Background="Transparent" BorderThickness="0" Click="Minimize_Click" RenderTransformOrigin="2.017,0.517" >
-                <Image Source="Assets\mini.png" HorizontalAlignment="Center" Height="44"/>
-            </Button>
-            <Button Name="ExitButton" Background="Transparent" BorderThickness="0" Click="ExitButton_Click" Margin="0,0,0,-0.4" RenderTransformOrigin="0.5,0.506" >
-                <Image  Source="Assets\exit.png" HorizontalAlignment="Center" RenderTransformOrigin="0.943,2.367" Height="40"/>
-            </Button>
+                  <Image Source="Assets\番茄.png" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                  <TextBlock Margin="5,0,0,0" 
+                             VerticalAlignment="Center" 
+                             FontSize="24" 
+                             Text="番茄钟"/>
+                  <TextBlock Text="                                                             "/>
+                  <Button Name="ExitButton" Background="Transparent" BorderThickness="0" Click="ExitButton_Click" >
+                        <Image  Source="Assets\结束.png"   HorizontalAlignment="Center"/>
+                  </Button>
 
 
-        </StackPanel>
+            </StackPanel>
 
-        <Image Name="BgImage" Source="Assets\bg1.jpg" Grid.RowSpan="3" Stretch="Fill"  Panel.ZIndex="-1"/>
+            <Image Name="BgImage" Source="Assets\bg1.jpg" Grid.RowSpan="3" Stretch="Fill"  Panel.ZIndex="-1"/>
 
-        <StackPanel Name="MenuStackPanel" Grid.Row="1" Orientation="Horizontal"  Panel.ZIndex="5">
-            <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Left" >
-                <Button     Name="HistoryButton"
+            <StackPanel Name="MenuStackPanel" Grid.Row="1" Orientation="Horizontal"  Panel.ZIndex="5">
+                  <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Left" >
+                        <Button     Name="HistoryButton"
                                 Background="Transparent" 
                                 Foreground="#E1A679" 
                                 FontFamily="Segoe MDL2 Assets"
@@ -50,10 +46,10 @@
                                 Content="&#xE776;"
                                 BorderThickness="0"
                                 Click="HistoryButton_Click"/>
-            </StackPanel>
+                  </StackPanel>
 
-            <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Button Background="Transparent" 
+                  <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button Background="Transparent" 
                                 Name="ListButton"
                                 Foreground="#E1A679" 
                                 FontFamily="Segoe MDL2 Assets" 
@@ -61,10 +57,10 @@
                                 Content="&#xE700;" 
                                 BorderThickness="0"
                                 Click="ListButton_Click"/>
-            </StackPanel>
+                  </StackPanel>
 
-            <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" >
-                <Button  Name="TempButton"
+                  <StackPanel Width="120" VerticalAlignment="Center" HorizontalAlignment="Right" >
+                        <Button  Name="TempButton"
                                 Background="Transparent" 
                                 Foreground="#E1A679" 
                                 FontFamily="Segoe MDL2 Assets"
@@ -72,11 +68,11 @@
                                 Content="&#xE768;" 
                                 BorderThickness="0" 
                                  Click="TempButton_Click"/>
+                  </StackPanel>
             </StackPanel>
-        </StackPanel>
 
 
-        <Frame Name="MyFrame"  NavigationUIVisibility="Hidden" Grid.Row="2" Panel.ZIndex="5" />
+            <Frame Name="MyFrame"  NavigationUIVisibility="Hidden" Grid.Row="2" Panel.ZIndex="5" />
 
-    </Grid>
+      </Grid>
 </Window>

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using TomatoClock;
 namespace WpfApp1
 {
     /// <summary>
@@ -20,56 +20,87 @@ namespace WpfApp1
     /// </summary>
     public partial class History : Page
     {
-        static int i = 0;
+        ClockService clockService = new ClockService();
+        
         public History()
         {
             InitializeComponent();
+
+            this.WorkPlans.ItemsSource = clockService.getAllWorkPlan().Select(a => a.workName).ToList();
         }
 
-        private void AddItem(String name, String time, String process)                                        //添加项目
+        private void AddItem(String name, String process)                                        //添加项目
         {
-                  WrapPanel wrapPanel = new WrapPanel();
-                  wrapPanel.Orientation = Orientation.Horizontal;
-                  wrapPanel.HorizontalAlignment = HorizontalAlignment.Center;
+            WrapPanel wrapPanel = new WrapPanel();
+            wrapPanel.HorizontalAlignment = HorizontalAlignment.Center;
+            wrapPanel.Margin = new Thickness(0, 20, 0, 0);
 
-                  Border border = new Border();
-                  Thickness margin1 = new Thickness(0, 10, 0, 0);
-                  border.Margin = margin1;
-                  border.BorderThickness = new Thickness(2);
-                  border.BorderBrush = new SolidColorBrush(Colors.White);                                     //加入边框
+            TextBlock nameBlock = new TextBlock();
+            nameBlock.Text = name;
+            nameBlock.Width = 100;
+            nameBlock.FontSize = 17;
+            nameBlock.Foreground = Brushes.White;
+            wrapPanel.Children.Add(nameBlock);
 
-                  TextBlock nameBlock = new TextBlock();
-                  nameBlock.Text = name;
-                  nameBlock.FontSize = 16;
-                  nameBlock.Foreground = Brushes.White;
-                  wrapPanel.Children.Add(nameBlock);
+            TextBlock processBlock = new TextBlock();
+            processBlock.Margin = new Thickness(80,0,0,0);
+            processBlock.Foreground = Brushes.White;
+            processBlock.FontSize = 17;
+            processBlock.Width = 100;
+            processBlock.Text = process;
+            wrapPanel.Children.Add(processBlock);
 
-                  TextBlock timeBlock = new TextBlock();
-                  timeBlock.Text = time;
-                  timeBlock.FontSize = 16;
-                  timeBlock.Foreground = Brushes.White;
-                  Thickness margin = new Thickness(20, 0, 0, 0);
-                  timeBlock.Margin = margin;
-                  wrapPanel.Children.Add(timeBlock);
-
-                  TextBlock processBlock = new TextBlock();
-                  processBlock.Margin = margin;
-                  processBlock.Foreground = Brushes.White;
-                  processBlock.FontSize = 16;
-                  processBlock.Text = "完成进度：" + process;
-                  wrapPanel.Children.Add(processBlock);
-
-                  border.Child = wrapPanel;
-                  border.GotMouseCapture += ShowItemDetail(border);
-                  this.HistoryList.Children.Add(border);
+            this.HistoryList.Children.Add(wrapPanel);
 
 
-            }
+        }
 
-            private MouseEventHandler ShowItemDetail(Border border)
+        private MouseEventHandler ShowItemDetail(Border border)
+        {
+
+            throw new NotImplementedException();
+        }
+
+        private void WorkPlans_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int count = HistoryList.Children.Count;
+            HistoryList.Children.RemoveRange(0,count);
+            string wpName = WorkPlans.SelectedItem.ToString();
+            WorkPlan target = clockService.chooseWorkPlan(wpName);
+            int day = clockService.GetDays(target);
+            if (day < 7)
             {
-
-                  throw new NotImplementedException();
+                for(int i = 0; i < day+1; i++)
+                {
+                    int finished = clockService.getFinishedTomatoSignNum(target, day - i).Count();
+                    int active = clockService.getActiveTomatoSignNum(target, day - i).Count();
+                    if (i == 0)
+                    {
+                        this.AddItem("today", finished + "/" + active);
+                    }
+                    else
+                    {
+                        this.AddItem(i+"天前", finished + "/" + active);
+                    }
+                }
             }
-      }
+            else
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    int finished = clockService.getFinishedTomatoSignNum(target, day - i).Count();
+                    int active = clockService.getActiveTomatoSignNum(target, day - i).Count();
+                    if (i == 0)
+                    {
+                        this.AddItem("today", finished + "/" + active);
+                    }
+                    else
+                    {
+                        this.AddItem(i + "天前", finished + "/" + active);
+                    }
+                }
+            }
+            
+        }
+    }
 }
