@@ -4,28 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1"
-      mc:Ignorable="d" d:DesignWidth="360"
-      Title="History" Height="600">
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="History">
 
-
-        <StackPanel>
-
-        <WrapPanel>
-            <Label Content="选择工作计划:" FontSize="18" Foreground="White"  Margin="30,20,0,0"></Label>
-            <ComboBox Name="WorkPlans" Width="130" Height="30"  FontSize="18" Margin="0,20,0,0" SelectionChanged="WorkPlans_SelectionChanged"></ComboBox>
-        </WrapPanel>
-
-        <WrapPanel HorizontalAlignment="Center">
-            <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
-                <TextBlock Text="日期" Width="100" Foreground="White" FontSize="17"></TextBlock>
-                <TextBlock Text="完成情况" Width="100" FontSize="17" Foreground="White" Margin="80,0,0,0"></TextBlock>
-            </WrapPanel>
-        </WrapPanel>
-        <WrapPanel HorizontalAlignment="Center" Name="HistoryList">
-            
-        </WrapPanel>
-    </StackPanel>
-
-
-
+    <Grid>
+            <ScrollViewer  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                  <WrapPanel Orientation="Vertical" Name="HistoryList"  >
+                        
+                  </WrapPanel>                  
+            </ScrollViewer>
+    </Grid>
 </Page>

@@ -49,21 +49,31 @@ namespace WpfApp1
                    Random rd = new Random();
                    int i = rd.Next(0, 15);
                   JiTang.Text = arry[i];
-            
-
             }
 
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
             {
-                  StartButton.Visibility = Visibility.Collapsed;
-                  StopButton.Visibility = Visibility.Visible;
-            //开始计时，并计入history
-            //将TimeText.Text与倒计时相绑定
+            string content = Button.Content.ToString();
+            if (content == "结束")
+            {
+                Button.Content = "开始";
+                timer.Stop();
+                ico.notifyIcon.BalloonTipText = "没有完成呢~";
+                ico.notifyIcon.ShowBalloonTip(2000);
+                ResetClock();
+            }
+            else if(content == "开始")
+            {
+                Button.Content = "结束";
+                //开始计时，并计入history
+                //将TimeText.Text与倒计时相绑定
+                MainWin_Loaded(sender, e);
+                StartClock();
 
-            //新写的
-            //这个是执行倒计时的操作
-            MainWin_Loaded(sender,e);
+                //新写的
+                //这个是执行倒计时的操作
+            }
         }
 
         //新写的
@@ -73,18 +83,6 @@ namespace WpfApp1
             timer = new DispatcherTimer();
             timer.Interval = new TimeSpan(10000000);   //事件间隔为一秒钟
             timer.Tick += new EventHandler(timer_Tick);
-             
-            //转换成秒数
-             Int32 hour = Convert.ToInt32(HourArea.Text);
-             Int32 minute = Convert.ToInt32(MinuteArea.Text);
-             Int32 second = Convert.ToInt32(SecondArea.Text);
-
-            //处理倒计时的类
-            timeCount = new TimeCount(hour * 3600 + minute * 60 + second);
-             CountDown += new CountDownHandler(timeCount.ProcessCountDown);
-
-             //开启定时器
-             timer.Start();
         }
         //委托
         public delegate bool CountDownHandler();
@@ -108,24 +106,38 @@ namespace WpfApp1
                  SecondArea.Text = timeCount.GetSecond();
              }
              else
-                 timer.Stop();
-         }
-        //新写的
-
-        private void StopButton_Click(object sender, RoutedEventArgs e)
             {
-                  StartButton.Visibility = Visibility.Visible;
-                  StopButton.Visibility = Visibility.Collapsed;
-            //不计入history
-
-            //点击这个之后，就会停止
-            timer.Stop();
+                SecondArea.Text = timeCount.GetSecond();
+                ico.notifyIcon.BalloonTipText = "完成目标啦！";
+                ico.notifyIcon.ShowBalloonTip(2000);
+                ResetClock();
+                Button.Content = "开始";
+                timer.Stop();
             }
+         }
+
+        private void ResetClock()
+        {
+            HourArea.Text = "00";
+            MinuteArea.Text = "15";
+            SecondArea.Text = "00";
+        }
+
+        private void StartClock()
+        {
+            //转换成秒数
+            Int32 hour = Convert.ToInt32(HourArea.Text);
+            Int32 minute = Convert.ToInt32(MinuteArea.Text);
+            Int32 second = Convert.ToInt32(SecondArea.Text);
+
+            //处理倒计时的类
+            timeCount = new TimeCount(hour * 3600 + minute * 60 + second);
+            CountDown += new CountDownHandler(timeCount.ProcessCountDown);
+
+            //开启定时器
+            timer.Start();
+        }
       }
-            
-
-
-
    }
 
       

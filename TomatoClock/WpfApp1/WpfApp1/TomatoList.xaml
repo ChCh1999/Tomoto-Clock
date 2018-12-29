@@ -8,25 +8,17 @@
       d:DesignHeight="600" d:DesignWidth="360"
       Title="TomatoList">
 
-    <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Panel.ZIndex="5">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Width="250">
-                <WrapPanel HorizontalAlignment="Center" 
-                             Orientation="Horizontal" 
-                             VerticalAlignment="Top" Width="242" Margin="0,0,7.6,0"
-                             >
-                    <TextBlock Text="工作计划" Width="70" FontSize="16" Foreground="White"/>
-                    <TextBlock Text="日期" Width="90" FontSize="16"  Foreground="White" Margin="20, 0, 0, 0"/>
-                    <TextBlock Text="完成度" Width="50" FontSize="16" Foreground="White"/>
-                </WrapPanel >
-                <WrapPanel HorizontalAlignment="Center" 
+      <Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"  Panel.ZIndex="5">
+                  <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                  <WrapPanel HorizontalAlignment="Center" 
                              Orientation="Vertical" 
                              VerticalAlignment="Top"
                              Name="ListWrapPanel">
+                        
+                  </WrapPanel >
 
-                </WrapPanel >
-
-                <Button Background="Transparent"
+                              <Button Background="Transparent"
                                       Content="CreateNewItem"  
                                       VerticalAlignment="Bottom"
                                       Name="CreateNewItem" 
@@ -36,9 +28,9 @@
                                       Margin="0,30,0,0"
                                       Click="CreateNewItem_Click"/>
 
+                        
 
-
-            </StackPanel>
-        </ScrollViewer>
+                  </StackPanel>
+            </ScrollViewer>
     </Grid>
 </Page>
