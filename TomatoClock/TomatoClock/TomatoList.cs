@@ -15,32 +15,25 @@ namespace TomatoClock
             tcondition = new List<TCondition>();
         }
 
-        [Column(TypeName = "uint")]
-        public long wid { get; set; }
-
         [Key]
-        [Column(TypeName = "uint")]
-        public long tid { get; set; }
+        public short tid { get; set; }
 
-        [Column(TypeName = "uint")]
-        public long tomatoTime { get; set; }
+        public short wid { get; set; }
 
-        [Column(TypeName = "uint")]
-        public long signNum { get; set; }
+        public int tomatoTime { get; set; }
+
+        public short signNum { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual List<TCondition> tcondition { get; set; }
 
         public virtual WorkPlan workplan { get; set; }
 
-        public TimeSpan TotalTime;
-
-        public TomatoList(long t ,long s)
+        public TomatoList(int totime, short snum, List<TCondition> list)
         {
-            tcondition = new List<TCondition>();
-            tomatoTime = t;
-            TotalTime = new TimeSpan(0, 0, (int)t);
-            signNum = s;
+            tomatoTime = totime;
+            signNum = snum;
+            tcondition = list;
         }
     }
 }
