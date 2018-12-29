@@ -33,7 +33,7 @@ namespace WpfApp1
         {
             WrapPanel wrapPanel = new WrapPanel();
             wrapPanel.HorizontalAlignment = HorizontalAlignment.Center;
-
+            wrapPanel.Margin = new Thickness(0, 20, 0, 0);
 
             TextBlock nameBlock = new TextBlock();
             nameBlock.Text = name;
@@ -63,6 +63,8 @@ namespace WpfApp1
 
         private void WorkPlans_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int count = HistoryList.Children.Count;
+            HistoryList.Children.RemoveRange(0,count);
             string wpName = WorkPlans.SelectedItem.ToString();
             WorkPlan target = clockService.chooseWorkPlan(wpName);
             int day = clockService.GetDays(target);

@@ -38,7 +38,10 @@ namespace TomatoClock
         {
             history.Delete(Name);
         }
-
+        public List<int>GetTodayTimes(string name)
+        {
+            return history.getTodayTimes(name);
+        }
         
         //修改工作计划名
         public bool ChangeWPName(String nameBefore, String nameNew)

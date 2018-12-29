@@ -5,16 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="chooseTomato" Height="260" Width="300" WindowStartupLocation="CenterOwner">
-    <Grid RenderTransformOrigin="0.533,0.499">
+        Title="chooseTomato" Background="DarkCyan"  Height="250" Width="300" WindowStyle="None" WindowStartupLocation="CenterOwner">
+    <Grid RenderTransformOrigin="0.533,0.4919" >
         <ComboBox HorizontalAlignment="Left" Name="tomatos" VerticalAlignment="Top" 
-                  Width="120" Margin="109,75,0,0"
+                  Width="43" Margin="109,75,0,0"
                   SelectionChanged="tomatos_SelectionChanged"/>
-        <Label Content="选择番茄：" Margin="42,75,189.6,129.4" RenderTransformOrigin="0.284,0.472"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="工作计划：" VerticalAlignment="Top" Width="83" Margin="42,30,0,0"/>
-        <Label Content="：" Name="WPName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,30,0,0"/>
-        <Button Content="确认" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="109,143,0,0"/>
-        <Button Content="删除工作计划" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="190,30,0,0"/>
+        <Label Foreground="White"
+            Content="选择番茄：" 
+            Margin="42,75,189.6,129.4" 
+            Height="30" Width="60" 
+            RenderTransformOrigin="0.284,0.472"/>
+        <Label Foreground="White"
+            HorizontalAlignment="Left" Height="23" Content="工作计划：" VerticalAlignment="Top" Width="61" Margin="42,30,0,0"/>
+        <Label Foreground="White" Content="：" Name="WPName" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="109,30,0,0" RenderTransformOrigin="-0.179,0.52" Width="59"/>
+        <Button Foreground="White" Content="确认" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="62,143,0,0" Background="Transparent" BorderBrush="White" BorderThickness="2"/>
+        <Button Foreground="White"
+            Content="删除工作计划" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                Width="75" 
+                Background="Transparent"
+                BorderBrush="white"
+                BorderThickness="2"
+                Click="Button_Click_1"
+                Margin="190,30,0,0"/>
+        <Label Foreground="White" Content="min" Margin="157,75,96.6,129.4" Height="30" RenderTransformOrigin="0.55,0.856"/>
+        <Button Foreground="White" Content="取消" 
+                Background="Transparent"
+                BorderBrush="White" 
+                BorderThickness="2"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="170,143,0,0" Click="Button_Click"/>
 
     </Grid>
 </Window>

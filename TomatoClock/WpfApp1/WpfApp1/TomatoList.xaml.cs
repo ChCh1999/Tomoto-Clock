@@ -28,13 +28,13 @@ namespace WpfApp1
             InitializeComponent();
             //List<WorkPlan> allWP = clockService.getAllWorkPlan();  
             HistoryService history = new HistoryService();//将tomatolist内容导出，写成一个函数调用AddItem方法
-            List<WorkPlan> allWP =history.GetAllWorkPlan();
+            List<WorkPlan> allWP =clockService.getAllWorkPlan();
             foreach (WorkPlan w in allWP)
             {
                 int day = clockService.GetDays(w);
                 int finished = clockService.getFinishedTomatoSignNum(w, day).Count();
                 int active = clockService.getActiveTomatoSignNum(w, day).Count();
-                AddItem(w.workName, "第" + (day + 1) + "天/" + w.NumofDay, "完成度" + finished + "/" + active);
+                AddItem(w.workName, "第" + (day + 1) + "天/" + w.NumofDay, finished + "/" + active);
             }
         }
 
@@ -60,6 +60,7 @@ namespace WpfApp1
             TextBlock nameBlock = new TextBlock();
             nameBlock.Text = name;
             nameBlock.FontSize = 16;
+            nameBlock.Width = 70;
             nameBlock.Foreground = Brushes.White;
             wrapPanel.Children.Add(nameBlock);
 
@@ -69,22 +70,24 @@ namespace WpfApp1
             timeBlock.Foreground = Brushes.White;
             Thickness margin = new Thickness(20, 0, 0, 0);
             timeBlock.Margin = margin;
+            timeBlock.Width = 90;
             wrapPanel.Children.Add(timeBlock);
 
             TextBlock processBlock = new TextBlock();
             processBlock.Margin = margin;
             processBlock.Foreground = Brushes.White;
             processBlock.FontSize = 16;
-            processBlock.Text = "完成进度：" + process;
+            processBlock.Width = 50;
+            processBlock.Text = process;
             wrapPanel.Children.Add(processBlock);
 
 
             wrapPanel.Name = name;
-            wrapPanel.AddHandler(WrapPanel.MouseDownEvent, new MouseEventHandler(ChooseWP),true);
+            wrapPanel.AddHandler(WrapPanel.MouseDownEvent, new MouseButtonEventHandler(ChooseWP),true);
             this.ListWrapPanel.Children.Add(wrapPanel);
 
         }
-        private void ChooseWP(object sender, MouseEventArgs e)
+        private void ChooseWP(object sender, MouseButtonEventArgs e)
         {
             chooseTomato createTomato = new chooseTomato();
             createTomato.Owner = Application.Current.MainWindow;

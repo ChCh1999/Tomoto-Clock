@@ -175,10 +175,9 @@
                           Content="开始" 
                           FontSize="24"
                           Foreground="White"
-                          Margin="0,0,-0.4,0"
-                          
+                          Margin="0,20,0,0"
                           BorderThickness="0"
-                          Visibility="Visible" Height="32" VerticalAlignment="Bottom" />
+                          Visibility="Visible" Height="32" VerticalAlignment="Top" />
 
 
             <Button Name="StopButton"

@@ -12,13 +12,18 @@
 
         <WrapPanel>
             <Label Content="选择工作计划:" FontSize="18" Foreground="White"  Margin="30,20,0,0"></Label>
-            <ComboBox Name="WorkPlans" Width="130" Height="30" Margin="0,20,0,0" SelectionChanged="WorkPlans_SelectionChanged"></ComboBox>
+            <ComboBox Name="WorkPlans" Width="130" Height="30"  FontSize="18" Margin="0,20,0,0" SelectionChanged="WorkPlans_SelectionChanged"></ComboBox>
         </WrapPanel>
-        <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
-            <TextBlock Text="日期" Width="100" Foreground="White" FontSize="17"></TextBlock>
-            <TextBlock Text="完成情况" Width="100" FontSize="17" Foreground="White" Margin="80,0,0,0"></TextBlock>
+
+        <WrapPanel HorizontalAlignment="Center">
+            <WrapPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                <TextBlock Text="日期" Width="100" Foreground="White" FontSize="17"></TextBlock>
+                <TextBlock Text="完成情况" Width="100" FontSize="17" Foreground="White" Margin="80,0,0,0"></TextBlock>
+            </WrapPanel>
         </WrapPanel>
-        <WrapPanel Name="HistoryList"></WrapPanel>
+        <WrapPanel HorizontalAlignment="Center" Name="HistoryList">
+            
+        </WrapPanel>
     </StackPanel>
 
 

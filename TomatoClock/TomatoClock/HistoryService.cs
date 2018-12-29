@@ -22,8 +22,8 @@ namespace TomatoClock
         {
             using (var db = new HistoryDB())
             {
-                var workplan = db.workplan.Include("workplan").SingleOrDefault(w => w.workName == wname);
-                var tomato = db.tomatolist.Include("TomatoList").SingleOrDefault(t => t.wid == workplan.wpid);
+                var workplan = db.workplan.SingleOrDefault(w => w.workName == wname);
+                var tomato = db.tomatolist.SingleOrDefault(t => t.wid == workplan.wpid);
                 db.tcondition.RemoveRange(tomato.tcondition);
                 db.tomatolist.RemoveRange(workplan.tomatolist);
                 db.workplan.Remove(workplan);
@@ -174,6 +174,16 @@ namespace TomatoClock
                 for (int i = day; day < wp.NumofDay; i++)
                     target.tcondition[i].con = -1;
                 Update(wp);
+            }
+            
+        }
+        public List<int> getTodayTimes(string wpName)
+        {
+            using(HistoryDB db=new HistoryDB())
+            {
+                WorkPlan wp = db.workplan.SingleOrDefault(a => a.workName == wpName);
+                int day = getdays(wp);
+                return wp.tomatolist.Where(a => a.tcondition[day].con == 0).Select(a => a.tomatoTime / 60).ToList();
             }
             
         }

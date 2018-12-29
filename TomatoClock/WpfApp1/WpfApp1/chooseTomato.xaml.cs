@@ -32,13 +32,26 @@ namespace WpfApp1
             current = name;
             WorkPlan wp = clockService.chooseWorkPlan(current);
             int day = clockService.GetDays(wp);
-            tomatos.ItemsSource = wp.tomatolist.Where(a=>a.tcondition[day].con==0).Select(a => a.tomatoTime/60+"min").ToList();
+            List<int>times= clockService.GetTodayTimes(name);
+            tomatos.ItemsSource = times;
+            this.WPName.Content = name;
             return current;
         }
 
         private void tomatos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)//退出
+        {
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)//删除
+        {
+            clockService.deleteWorkPlan(current);
+            this.Close();
         }
     }
 }
