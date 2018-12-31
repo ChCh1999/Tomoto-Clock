@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TomatoClock;
 using System.Windows.Threading;
+using System.Diagnostics;//引入Process 类
+
 
 namespace WpfApp1
 {
@@ -27,6 +29,8 @@ namespace WpfApp1
         //新写的
         private TimeCount timeCount;
         private DispatcherTimer timer;
+        private Process[] MyProcesses;
+        private Stopwatch stopwatch;
         //新写的
         public Temp()
             {
@@ -49,7 +53,23 @@ namespace WpfApp1
                    Random rd = new Random();
                    int i = rd.Next(0, 15);
                   JiTang.Text = arry[i];
+            MyProcesses = Process.GetProcessesByName("Google Chrome.exe");//需要监控的程序名，该方法带出该程序所有用到的进程
+            foreach (Process myprocess in MyProcesses)
+            {
+                if (myprocess.ProcessName.ToLower() == "Google Chrome.exe")
+                {
+                    MessageBox.Show("SajetManager");
+                    myprocess.EnableRaisingEvents = true;//设置进程终止时触发的时间
+                    myprocess.Exited += new EventHandler(myprocess_Exited);//发现外部程序关闭即触发方法myprocess_Exited
+                }
             }
+
+        }
+
+        private void myprocess_Exited(object sender, EventArgs e)//被触发的程序
+        {
+            MessageBox.Show("SajetManager close");
+        }
 
 
         private void StartButton_Click(object sender, RoutedEventArgs e)

@@ -17,15 +17,23 @@ namespace TomatoClock
             InitializeComponent();
             ClockService my = new ClockService();
             HistoryService myh = new HistoryService();
-            List<TomatoList> tomatos = new List<TomatoList>();
-            List<TCondition> TC = new List<TCondition>();
-            TC.Add(new TCondition());
-            TomatoList to = new TomatoList(1000, 0, TC);
-            tomatos.Add(to);
-
-            myh.Add(new WorkPlan("尝试", 10, tomatos));
-            List<WorkPlan> w = myh.GetAllWorkPlan();
-            this.Text = w.Count().ToString();
+            for(int i = 0; i < 5; i++)
+            {
+                List<TomatoList> tomatos = new List<TomatoList>();
+                for(int r = 0; r < i + 1; r++)
+                {
+                    List<TCondition> TC = new List<TCondition>();
+                    for (int j = 0; j < 10; j++)
+                        TC.Add(new TCondition());
+                    TomatoList to = new TomatoList(30, 0, TC);
+                    tomatos.Add(to);
+                }
+                myh.Add(new WorkPlan("Wp"+i, 10, tomatos));
+                List<WorkPlan> w = myh.GetAllWorkPlan();
+                this.Text = w.Count().ToString();
+            }
+            
+            
         }
     }
 }

@@ -23,8 +23,7 @@ namespace TomatoClock
             using (var db = new HistoryDB())
             {
                 var workplan = db.workplan.SingleOrDefault(w => w.workName == wname);
-                var tomato = db.tomatolist.SingleOrDefault(t => t.wid == workplan.wpid);
-                db.tcondition.RemoveRange(tomato.tcondition);
+                var tomato = db.tomatolist.Where(t => t.wid == workplan.wpid);
                 db.tomatolist.RemoveRange(workplan.tomatolist);
                 db.workplan.Remove(workplan);
                 db.SaveChanges();
