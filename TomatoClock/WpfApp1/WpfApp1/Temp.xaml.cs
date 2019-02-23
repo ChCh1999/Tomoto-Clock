@@ -58,9 +58,9 @@ namespace WpfApp1
             {
                 if (myprocess.ProcessName.ToLower() == "Google Chrome.exe")
                 {
-                    MessageBox.Show("SajetManager");
-                    myprocess.EnableRaisingEvents = true;//设置进程终止时触发的时间
-                    myprocess.Exited += new EventHandler(myprocess_Exited);//发现外部程序关闭即触发方法myprocess_Exited
+                    MessageBox.Show("Google Chrome.exe");
+                    myprocess.EnableRaisingEvents = true;                   //设置进程终止时触发的时间
+                    myprocess.Exited += new EventHandler(myprocess_Exited); //发现外部程序关闭即触发方法myprocess_Exited
                 }
             }
 
@@ -68,9 +68,8 @@ namespace WpfApp1
 
         private void myprocess_Exited(object sender, EventArgs e)//被触发的程序
         {
-            MessageBox.Show("SajetManager close");
+            MessageBox.Show("Google Chrome close");
         }
-
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
             {

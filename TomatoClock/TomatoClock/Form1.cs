@@ -32,8 +32,6 @@ namespace TomatoClock
                 List<WorkPlan> w = myh.GetAllWorkPlan();
                 this.Text = w.Count().ToString();
             }
-            
-            
         }
     }
 }

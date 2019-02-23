@@ -70,6 +70,7 @@ namespace TomatoClock
                 return db.workplan.SingleOrDefault(w => w.workName == wname);
             }
         }
+
         public int getdays(WorkPlan wp)
         {
             DateTime dt = DateTime.Now.Date;
@@ -100,6 +101,7 @@ namespace TomatoClock
         //        return query.ToList();
         //    }
         //}
+
         public List<int> getActiveTomatoSignNum(WorkPlan wp,int day)
         {
             List<int> result = new List<int>();
@@ -110,6 +112,7 @@ namespace TomatoClock
                 return result;
             }
         }
+
         public List<int> getFinishedTomatoSignNum(WorkPlan wp, int day)
         {
             List<int> result = new List<int>();
@@ -174,7 +177,6 @@ namespace TomatoClock
                     target.tcondition[i].con = -1;
                 Update(wp);
             }
-            
         }
         public List<int> getTodayTimes(string wpName)
         {
@@ -184,7 +186,6 @@ namespace TomatoClock
                 int day = getdays(wp);
                 return wp.tomatolist.Where(a => a.tcondition[day].con == 0).Select(a => a.tomatoTime / 60).ToList();
             }
-            
         }
     }
 }
